@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  overflow: auto;
   margin: 0;
   padding: 0;
 
@@ -34,7 +35,7 @@ header section {
   align-items: center;
 }
 
-header section .right {
+.right {
   justify-content: flex-end;
 }
 
@@ -44,11 +45,22 @@ aside div {
   align-items: center;
 }
 
-main nav div {
+nav div {
   width: 70%;
 }
 
-header section .right div {
+footer section div {
+  width: 190px;
+  height: minmax(20%, auto);
+  background-color: var(--color-white);
+  border: solid 1px var(--color-black);
+  padding-right: var(--padding-value);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.right > div {
   width: 190px;
   height: minmax(20%, auto);
   background-color: var(--color-white);
@@ -96,44 +108,33 @@ aside div img:hover {
   transition: 0.5s linear;
 }
 
-.main-footer-container footer {
+footer {
   background: var(--bg-color-light-yellow);
   display: flex;
 }
 
-.main-footer-container footer section {
+footer section {
   width: 50%;
   padding: var(--padding-value);
   display: flex;
   align-items: center;
 }
 
-.main-footer-container footer section div {
-  width: 190px;
-  height: minmax(20%, auto);
-  background-color: var(--color-white);
-  border: solid 1px var(--color-black);
-  padding-right: var(--padding-value);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-main nav {
+nav {
   background: var(--bg-color-white-yellow);
   padding: var(--padding-value);
   display: flex;
   justify-content: flex-end;
 }
 
-main nav div li {
+nav div li {
   margin-top: 10px;
 }
 
-main nav div li a {
+nav div li a {
   color: var(--color-black);
 }
 
-main nav div li a:visited {
+nav div li a:visited {
   color: var(--color-black);
 }
