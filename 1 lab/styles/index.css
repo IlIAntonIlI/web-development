@@ -75,12 +75,12 @@ main {
   grid-template-columns: minmax(80%, auto) minmax(20%, auto);
 }
 
-.main-footer-container {
+.container-for-footer-and-content {
   display: grid;
   grid-template-rows: minmax(60vh, auto) minmax(20vh, auto);
 }
 
-.main-aside-container {
+.content {
   display: grid;
   grid-template-columns: 25% 75%;
 }
