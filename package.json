@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ignore-path .gitignore",
+    "lint": "eslint . --no-error-on-unmatched-pattern --ignore-path .gitignore ",
     "lint:fix": "npx eslint . --fix",
     "format": "npx prettier . --check",
     "format:fix": "npx prettier . --write",
