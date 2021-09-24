@@ -1,6 +1,4 @@
 * {
-  box-sizing: border-box;
-  overflow: auto;
   margin: 0;
   padding: 0;
 
@@ -72,7 +70,7 @@ footer section div {
 
 main {
   display: grid;
-  grid-template-columns: minmax(80%, auto) minmax(20%, auto);
+  grid-template-columns: 80% 20%;
 }
 
 .container-for-footer-and-content {
@@ -86,8 +84,21 @@ main {
 }
 
 .main-section {
+  line-height: 1.2em;
+  font-family: serif;
+  letter-spacing: 0.05em;
+  font-weight: 100;
+  word-wrap: break-word;
   background-color: var(--bg-color-green);
   padding: var(--padding-value);
+  display: flex;
+  justify-content: center;
+}
+
+.main-section div {
+  width: 40vw;
+  max-width: 45vw;
+  box-sizing: border-box;
 }
 
 aside {
@@ -121,18 +132,16 @@ footer section {
 }
 
 nav {
+  word-wrap: break-word;
   background: var(--bg-color-white-yellow);
   padding: var(--padding-value);
   display: flex;
   justify-content: flex-end;
 }
 
-nav div li {
-  margin-top: 10px;
-}
-
 nav div li a {
   color: var(--color-black);
+  margin-top: 10px;
 }
 
 nav div li a:visited {
