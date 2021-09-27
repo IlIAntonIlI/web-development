@@ -107,13 +107,13 @@ aside {
   background: var(--bg-color-white-yellow);
 }
 
-aside div img {
+aside img {
   height: 80%;
   width: 60%;
   transition: 0.5s linear;
 }
 
-aside div img:hover {
+aside img:hover {
   box-shadow: -10px 10px 3px 0 var(--color-grey);
   transform: translate(20px, -20px);
   transition: 0.5s linear;
@@ -139,11 +139,11 @@ nav {
   justify-content: flex-end;
 }
 
-nav div li a {
+nav a {
   color: var(--color-black);
   margin-top: 10px;
 }
 
-nav div li a:visited {
+nav a:visited {
   color: var(--color-black);
 }
