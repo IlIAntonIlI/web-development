@@ -4,5 +4,19 @@
   },
   "scripts": {
     "prepare": "husky install"
-  }
+  },
+  "name": "web-development",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IlIAntonIlI/web-development.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IlIAntonIlI/web-development/issues"
+  },
+  "homepage": "https://github.com/IlIAntonIlI/web-development#readme",
+  "description": ""
 }
