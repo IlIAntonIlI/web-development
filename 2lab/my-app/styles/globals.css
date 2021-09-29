@@ -1,4 +1,6 @@
-*{
+* {
+  box-sizing: border-box;
+
   --background-color-light-grey: #dfe6e9;
   --form-background-color-grey: #2f3640;
   --border-color-light-green: #2ecc71;
@@ -22,10 +24,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 p {
@@ -67,7 +65,7 @@ textarea {
   height: 200px;
   font-size: inherit;
   letter-spacing: 1px;
-  border: solid 1.5px black;
+  border: solid 1.5px var(--color-black);
   border-radius: 5px;
   padding: 15px;
   resize: none;
