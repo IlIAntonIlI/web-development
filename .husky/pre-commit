@@ -1,4 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+
+cd 1lab && npm run lint && npm run lint:style && npm run format && cd ../
 cd 2lab/my-app && npm run lint && npm run lint:style && npm run format && cd ../../

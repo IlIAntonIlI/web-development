@@ -1,16 +1,14 @@
 {
-  "devDependencies": {
-    "husky": "^7.0.2"
-  },
+  "name": "web-development",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "prepare": "husky install"
   },
-  "name": "web-development",
-  "version": "1.0.0",
-  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IlIAntonIlI/web-development.git"
+    "url": "git+ssh://git@github.com/IlIAntonIlI/web-development.git"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +16,7 @@
     "url": "https://github.com/IlIAntonIlI/web-development/issues"
   },
   "homepage": "https://github.com/IlIAntonIlI/web-development#readme",
-  "description": ""
+  "devDependencies": {
+    "husky": "^7.0.2"
+  }
 }
