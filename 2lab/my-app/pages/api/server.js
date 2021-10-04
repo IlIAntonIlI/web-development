@@ -38,7 +38,7 @@ export default async function handler(req, res) {
   };
 
   try {
-    fetch("https://web-development2lab-iliantonili.vercel.app/api/check", {
+    fetch("https://web-development-git-2lab-iliantonili.vercel.app/api/check", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
