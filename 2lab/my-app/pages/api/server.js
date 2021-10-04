@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   try {
     // 10 stands for the maximum amount of requests allowed during the defined interval
     // rateLimit now returns a promise, let's await for it! (◕‿◕✿)
-    await rateLimit(2, req.headers["X-Forwarded-For"][0]);
+    await rateLimit(2, req.headers["x-forwarded-for"][0]);
   } catch (error) {
     res.status(429).json({
       sended: false,
@@ -57,6 +57,10 @@ export default async function handler(req, res) {
           html: data.html,
         };
       });
+  } catch (error) {
+    return res.status(500).json({ sended: false, error: "Failed request!" });
+  }
+  try {
     await transporter.sendMail({
       from: bodyToSend.from, // sender address
       to: bodyToSend.to, // list of receivers
@@ -66,6 +70,8 @@ export default async function handler(req, res) {
     });
     return res.status(200).json({ sended: true, messuage: "Mail sent" });
   } catch (error) {
-    return res.status(500).json({ sended: false, error: "Failed sending!" });
+    return res
+      .status(500)
+      .json({ sended: false, error: "Connecting to mailer failed" });
   }
 }
