@@ -114,9 +114,11 @@ export default function Home() {
   }
 
   const closeFunction = function () {
-    setVisibilityAlert(false);
-    setDisabledButoon("");
-    setVisibility(false);
+    if (visibilityOfAlert) {
+      setVisibilityAlert(false);
+      setDisabledButoon("");
+      setVisibility(false);
+    }
   };
 
   return (

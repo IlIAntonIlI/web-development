@@ -38,7 +38,7 @@ export default async function handler(req, res) {
   };
 
   try {
-    fetch("http://localhost:3000/api/check", {
+    /*fetch("http://localhost:3000/api/check", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export default async function handler(req, res) {
         bodyToSend.subject = data.subject;
         bodyToSend.text = data.text;
         bodyToSend.html = data.html;
-      });
+      });*/
     await transporter.sendMail({
       from: bodyToSend.from, // sender address
       to: bodyToSend.to, // list of receivers
