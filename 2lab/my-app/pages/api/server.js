@@ -5,13 +5,13 @@ const rateLimit = require("lambda-rate-limiter")({
 
 export default async function handler(req, res) {
   try {
-    await rateLimit(2, req.headers["x-forwarded-for"]);
+    await rateLimit(3, req.headers["x-forwarded-for"]);
   } catch (error) {
     return res.status(429).json({
       sended: false,
       error:
         "Too many requests!\n Curently: " +
-        JSON.stringify(error + 1) +
+        JSON.stringify(error) +
         " | Maximum: 3 per minute",
     });
   }
