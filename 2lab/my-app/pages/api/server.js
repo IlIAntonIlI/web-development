@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   try {
     // 10 stands for the maximum amount of requests allowed during the defined interval
     // rateLimit now returns a promise, let's await for it! (◕‿◕✿)
-    await rateLimit(2, req.headers["x-forwarded-for"][0]);
+    await rateLimit(2, req.headers["x-forwarded-for"]);
   } catch (error) {
     res.status(429).json({
       sended: false,
