@@ -1,0 +1,113 @@
+.alertContainer {
+  position: absolute;
+  width: 30vw;
+  height: 20vh;
+  right: 35vw;
+  top: -20vh;
+  font-size: 2em;
+  border-radius: 5px;
+  z-index: 10;
+  transition: 0.5s ease;
+  display: flex;
+}
+
+@media (max-height: 999px) {
+  .text {
+    width: 90%;
+    height: 100%;
+    font-size: var(--font-size-short-phone);
+    color: var(--color-white);
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .closeButton {
+    width: 10%;
+    padding-right: 5px;
+    padding-top: 5px;
+    font-size: var(--font-size-short-phone);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    i {
+      cursor: pointer;
+      color: var(--color-white);
+    }
+  }
+}
+
+@media (max-width: 799px) {
+  .text {
+    width: 90%;
+    height: 100%;
+    font-size: var(--font-size-narrow-phone);
+    color: var(--color-white);
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .closeButton {
+    width: 10%;
+    padding-right: 5px;
+    padding-top: 5px;
+    font-size: var(--font-size-narrow-phone);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    i {
+      cursor: pointer;
+      color: var(--color-white);
+    }
+  }
+}
+
+@media (min-height: 1000px) and (min-width: 800px) {
+  .text {
+    width: 90%;
+    height: 100%;
+    font-size: calc(var(--font-size-desktop) * 2);
+    color: var(--color-white);
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .closeButton {
+    width: 10%;
+    padding-right: 5px;
+    padding-top: 5px;
+    font-size: calc(var(--font-size-desktop) * 2);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    i {
+      cursor: pointer;
+      color: var(--color-white);
+    }
+  }
+}
+
+.greenBG {
+  background-color: var(--background-color-light-green);
+}
+
+.redBG {
+  background-color: var(--background-color-light-red);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.move {
+  top: 10vh;
+  transition: 0.5s ease;
+}

@@ -1,25 +1,33 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import Spiner from "../components/spiner/spiner";
+import Alert from "../components/alert/alert";
+import { useState } from "react";
 
 export default function Home() {
-  function prevent(e) {
-    e.preventDefault();
-    checkInfo();
+  const [visibilityOfSpiner, setVisibility] = useState(false);
+  const [disabledButton, setDisabledButoon] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorText, setErrorText] = useState("");
+  const [visibilityOfAlert, setVisibilityAlert] = useState(false);
+  const [textOfAlert, setTextAlert] = useState("");
+  const [colorOfAlert, setColorAlert] = useState("");
+  function prevent(event) {
+    event.preventDefault();
+    checkInfo(event);
   }
 
-  function checkInfo() {
-    const fisrtEmail = document.getElementById("SenderEmail").value;
-    const secondEmail = document.getElementById("SendFor").value;
-    const messuage = document.getElementById("Messuage").value;
-    const button = document.getElementById("sendButton");
-    button.disabled = true;
+  function checkInfo(event) {
+    const fisrtEmail = event.target.elements.senderEmail.value;
+    const secondEmail = event.target.elements.sendFor.value;
+    const messuage = event.target.elements.messuage.value;
+    setDisabledButoon(!"");
     if (
       validateEmail(fisrtEmail) &&
       validateEmail(secondEmail) &&
       messuage !== ""
     ) {
-      document.getElementById("spiner").style.visibility = "visible";
+      setVisibility(true);
       const bodyToSend = {
         from: fisrtEmail,
         where: secondEmail,
@@ -34,52 +42,53 @@ export default function Home() {
         body: JSON.stringify(bodyToSend),
       })
         .then((resp) => {
-          if (resp.ok) {
-            alert("Mail sent!");
-            document.location.reload();
-          } else if (resp.status === 429) {
-            alert("Too many requests");
-            document.location.reload();
-          } else {
-            alert("Failed sending");
+          return resp.json();
+        })
+        .then((data) => {
+          if (data.sended) {
+            setVisibilityAlert(true);
+            setTextAlert(data.messuage);
+            setColorAlert("green");
+            return;
+          }
+          if (!data.sended) {
+            setVisibilityAlert(true);
+            setTextAlert(data.error);
+            setColorAlert("red");
+            return;
           }
         })
-        .catch((e) => alert("Error"));
+        .catch((e) => {
+          setTextAlert("Error while sending");
+          setColorAlert("red");
+          return;
+        });
     } else {
-      alert("Enter correct information and fill all fields of form");
-      button.disabled = false;
+      setVisibilityAlert(true);
+      setTextAlert("Enter correct information and fill all fields of form!");
+      setColorAlert("red");
     }
   }
 
-  function checkValidation() {
-    const fisrtEmail = document.activeElement.value;
-    const errorElement = document.activeElement.nextSibling;
-    if (fisrtEmail === "") {
-      let child = errorElement.firstChild;
-      if (child) {
-        errorElement.removeChild(child);
+  function checkValidation(event) {
+    const email = event.target.value;
+    if (email === "") {
+      setErrorEmail("The field must be not empty!");
+      if (!event.target.classList.contains(styles.redBorder)) {
+        event.target.classList.add(styles.redBorder);
       }
-      let emailError = document.createTextNode("The field must not be empty!");
-      errorElement.appendChild(emailError);
-    } else {
-      let child = errorElement.firstChild;
-      if (child) {
-        errorElement.removeChild(child);
-      }
+      return;
     }
-    if (validateEmail(fisrtEmail)) {
-      let child = errorElement.firstChild;
-      if (child) {
-        errorElement.removeChild(child);
+    if (validateEmail(email)) {
+      setErrorEmail("");
+      if (event.target.classList.contains(styles.redBorder)) {
+        event.target.classList.remove(styles.redBorder);
       }
-    } else {
-      let child = errorElement.firstChild;
-      if (!child) {
-        let emailError = document.createTextNode(
-          "The text you entered is not an email address!"
-        );
-        errorElement.appendChild(emailError);
-      }
+      return;
+    }
+    setErrorEmail("The text you entered is not an email address!");
+    if (!event.target.classList.contains(styles.redBorder)) {
+      event.target.classList.add(styles.redBorder);
     }
   }
 
@@ -89,24 +98,26 @@ export default function Home() {
     return re.test(email);
   }
 
-  function checkIsEmpty() {
-    const text = document.activeElement.value;
-    const errorElement = document.activeElement.nextSibling;
+  function checkIsEmpty(event) {
+    const text = event.target.value;
     if (text === "") {
-      let child = errorElement.firstChild;
-      if (!child) {
-        let emailError = document.createTextNode(
-          "The field must not be empty!"
-        );
-        errorElement.appendChild(emailError);
+      setErrorText("The field must be not empty!");
+      if (!event.target.classList.contains(styles.redBorder)) {
+        event.target.classList.add(styles.redBorder);
       }
-    } else {
-      let child = errorElement.firstChild;
-      if (child) {
-        errorElement.removeChild(child);
-      }
+      return;
+    }
+    setErrorText("");
+    if (event.target.classList.contains(styles.redBorder)) {
+      event.target.classList.remove(styles.redBorder);
     }
   }
+
+  const closeFunction = function () {
+    setVisibilityAlert(false);
+    setDisabledButoon("");
+    setVisibility(false);
+  };
 
   return (
     <>
@@ -116,6 +127,12 @@ export default function Home() {
         <link rel="icon" href="/images/titleImage.jpg" />
       </Head>
       <div className={styles.container}>
+        <Alert
+          visibility={visibilityOfAlert}
+          text={textOfAlert}
+          color={colorOfAlert}
+          close={closeFunction}
+        />
         <h1>Form for sending messages</h1>
         <section className={styles.formContainer}>
           <div className={styles.formMail}>
@@ -124,10 +141,9 @@ export default function Home() {
                 <label htmlFor="SenderEmail">Your e-mail:</label> <br />
                 <input
                   type="email"
-                  id="SenderEmail"
+                  id="senderEmail"
                   maxLength="40"
                   value="alvah.zulauf@ethereal.email"
-                  onChange={checkValidation}
                   disabled
                   required
                 />
@@ -138,13 +154,13 @@ export default function Home() {
                 <br />
                 <input
                   type="email"
-                  id="SendFor"
+                  id="sendFor"
                   maxLength="40"
                   placeholder="Recipient's email address here..."
                   onChange={checkValidation}
                   required
                 />
-                <p className={styles.error}></p>
+                <p className={styles.error}>{errorEmail}</p>
               </div>
               <div className={styles.formControlText}>
                 <label htmlFor="Messuage">Enter messuage:</label> <br />
@@ -152,19 +168,23 @@ export default function Home() {
                   form="emailForm"
                   placeholder="Text of the messuage here..."
                   onChange={checkIsEmpty}
-                  id="Messuage"
+                  id="messuage"
                   required
                 ></textarea>
-                <p className={styles.error}></p>
+                <p className={styles.error}>{errorText}</p>
               </div>
               <div className={styles.buttonContainer}>
                 <div className={styles.buttonWrap}>
-                  <button type="submit" id="sendButton">
+                  <button
+                    type="submit"
+                    id="sendButton"
+                    disabled={disabledButton}
+                  >
                     Send
                   </button>
                 </div>
-                <div id="spiner" className={styles.spinerWrap}>
-                  <Spiner></Spiner>
+                <div className={styles.spinnerWrap}>
+                  <Spiner visibility={visibilityOfSpiner} />
                 </div>
               </div>
             </form>

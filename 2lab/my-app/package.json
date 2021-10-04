@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint:style": "stylelint \"**/*.css\" --ignore-path .gitignore",
-    "lint:style:fix": "stylelint \"**/*.css\" --fix --ignore-path .gitignore",
+    "lint:style": "stylelint \"**/*.scss\" --ignore-path .gitignore",
+    "lint:style:fix": "stylelint \"**/*.scss\" --fix --ignore-path .gitignore",
     "lint": "eslint . --no-error-on-unmatched-pattern --ignore-path .gitignore ",
     "lint:fix": "eslint . --fix --ignore-path .gitignore",
     "format": "prettier . --check --ignore-path .gitignore",
@@ -19,10 +19,10 @@
     "nodemailer": "^6.6.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sanitize-html": "^2.5.1",
-    "sass": "^1.42.1"
+    "sanitize-html": "^2.5.1"
   },
   "devDependencies": {
+    "sass": "^1.42.1",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "prettier": "2.4.1",
