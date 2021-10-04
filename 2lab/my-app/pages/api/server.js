@@ -29,11 +29,18 @@ export default async function handler(req, res) {
     to: req.body.where,
     subject: "Hello ✔",
     text: req.body.letter,
-    html: req.body.letter,
+    html: req.body.letter
   };
 
   try {
-    fetch("https://web-development-git-2lab-iliantonili.vercel.app/api/check", {
+    var sendInfo = {
+      from: null, // sender address
+      to: null, // recipient
+      subject: "Subject", // Subject line
+      text: null, // plain text body
+      html: null,
+    };
+    await fetch("http://web-development2lab-git-2lab-iliantonili.vercel.app/api/check", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,24 +51,24 @@ export default async function handler(req, res) {
         return resp.json();
       })
       .then((data) => {
-        bodyToSend = {
-          from: data.from,
-          to: data.to,
-          subject: data.subject,
-          text: data.text,
-          html: data.html,
+        sendInfo = {
+          from: data.from, // sender address
+          to: data.to, // list of receivers
+          subject: data.subject, // Subject line
+          text: data.text, // plain text body
+          html: data.html, // html body
         };
       });
   } catch (error) {
     return res.status(500).json({ sended: false, error: "Failed request!" });
   }
   try {
-    await transporter.sendMail({
-      from: bodyToSend.from, // sender address
-      to: bodyToSend.to, // list of receivers
-      subject: bodyToSend.subject, // Subject line
-      text: bodyToSend.text, // plain text body
-      html: bodyToSend.html, // html body
+    let info = await transporter.sendMail({
+      from: sendInfo.from, // sender address
+      to: sendInfo.to, // list of receivers
+      subject: sendInfo.subject, // Subject line
+      text: sendInfo.text, // plain text body
+      html: sendInfo.html // html body
     });
   } catch (error) {
     return res
