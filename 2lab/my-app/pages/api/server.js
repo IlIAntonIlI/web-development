@@ -1,24 +1,19 @@
-import sanitizeHtml from "sanitize-html";
-
 const nodemailer = require("nodemailer");
-
 const rateLimit = require("lambda-rate-limiter")({
   interval: 60 * 1000, // Our rate-limit interval, one minute
 }).check;
 
 export default async function handler(req, res) {
   try {
-    // 10 stands for the maximum amount of requests allowed during the defined interval
-    // rateLimit now returns a promise, let's await for it! (◕‿◕✿)
     await rateLimit(2, req.headers["x-forwarded-for"]);
   } catch (error) {
-    res.status(429).json({
+    return res.status(429).json({
       sended: false,
       error:
         "Too many requests!\n Curently: " +
         JSON.stringify(error + 1) +
         " | Maximum: 3 per minute",
-    }); // Still returning a basic 429, but we could do anything~
+    });
   }
   const transporter = nodemailer.createTransport({
     host: "smtp.ethereal.email",
@@ -30,7 +25,7 @@ export default async function handler(req, res) {
   });
 
   const bodyToSend = {
-    from: '"Alvah 👻" <alvah.zulauf@ethereal.email>',
+    from: "alvah.zulauf@ethereal.email",
     to: req.body.where,
     subject: "Hello ✔",
     text: req.body.letter,
@@ -68,10 +63,10 @@ export default async function handler(req, res) {
       text: bodyToSend.text, // plain text body
       html: bodyToSend.html, // html body
     });
-    return res.status(200).json({ sended: true, messuage: "Mail sent" });
   } catch (error) {
     return res
       .status(500)
       .json({ sended: false, error: "Connecting to mailer failed" });
   }
+  return res.status(200).json({ sended: true, messuage: "Mail sent" });
 }
