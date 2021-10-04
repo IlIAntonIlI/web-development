@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   try {
     // 10 stands for the maximum amount of requests allowed during the defined interval
     // rateLimit now returns a promise, let's await for it! (◕‿◕✿)
-    await rateLimit(2, req.headers["X-Forwarded-For"]);
+    await rateLimit(2, req.headers["X-Forwarded-For"][0]);
   } catch (error) {
     res.status(429).json({
       sended: false,
@@ -38,7 +38,7 @@ export default async function handler(req, res) {
   };
 
   try {
-    /*fetch("http://localhost:3000/api/check", {
+    fetch("https://web-development2lab-iliantonili.vercel.app/api/check", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,12 +49,14 @@ export default async function handler(req, res) {
         return resp.json();
       })
       .then((data) => {
-        bodyToSend.from = data.from;
-        bodyToSend.to = data.to;
-        bodyToSend.subject = data.subject;
-        bodyToSend.text = data.text;
-        bodyToSend.html = data.html;
-      });*/
+        bodyToSend = {
+          from: data.from,
+          to: data.to,
+          subject: data.subject,
+          text: data.text,
+          html: data.html,
+        };
+      });
     await transporter.sendMail({
       from: bodyToSend.from, // sender address
       to: bodyToSend.to, // list of receivers
