@@ -6,6 +6,12 @@ import InputEmail from "../components/inputEmail/inputEmail";
 import InputText from "../components/inputText/inputText";
 import { useState } from "react";
 
+export function validateEmail(email) {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
 export default function Home() {
   const [visibilityOfSpiner, setVisibility] = useState(false);
   const [disabledButton, setDisabledButoon] = useState("");
@@ -60,12 +66,6 @@ export default function Home() {
       setTextAlert("Enter correct information and fill all fields of form!");
       setColorAlert("red");
     }
-  }
-
-  function validateEmail(email) {
-    const re =
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
   }
 
   const closeFunction = function () {

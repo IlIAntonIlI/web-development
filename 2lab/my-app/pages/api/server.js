@@ -1,3 +1,5 @@
+import sanitizeHtml from "sanitize-html";
+import { validateEmail } from "../index";
 const nodemailer = require("nodemailer");
 const rateLimit = require("lambda-rate-limiter")({
   interval: 60 * 1000, // Our rate-limit interval, one minute
@@ -25,14 +27,33 @@ export default async function handler(req, res) {
     },
   });
 
+  for (let key in req.body) {
+    if (!req.body[key]) {
+      return res
+        .status(500)
+        .json({ message: "All fields must not be empty!" });
+    }
+  }
+
+  if (!validateEmail(trim(req.body.from)) || !validateEmail(trim(req.body.where))) {
+    return res.status(500).json({ message: "Enter correct email, please." });
+  }
+
+  const clearHtml = sanitizeHtml(req.body.letter);
+  if (!clearHtml) {
+    return res.status(500).json({ message: "Enter safe information!" });
+  }
+
+  const bodyToSend = {
+    from: req.body.from,
+    to: req.body.where,
+    subject: "Subject",
+    text: req.body.letter,
+    html: clearHtml,
+  };
+
   try {
-    await transporter.sendMail({
-      from: sendInfo.from, // sender address
-      to: sendInfo.to, // list of receivers
-      subject: sendInfo.subject, // Subject line
-      text: sendInfo.text, // plain text body
-      html: "", // html body
-    });
+    let info = await transporter.sendMail(bodyToSend);
   } catch (error) {
     return res.status(500).json({
       sended: false,
