@@ -29,13 +29,14 @@ export default async function handler(req, res) {
 
   for (let key in req.body) {
     if (!req.body[key]) {
-      return res
-        .status(500)
-        .json({ message: "All fields must not be empty!" });
+      return res.status(500).json({ message: "All fields must not be empty!" });
     }
   }
 
-  if (!validateEmail(trim(req.body.from)) || !validateEmail(trim(req.body.where))) {
+  if (
+    !validateEmail(trim(req.body.from)) ||
+    !validateEmail(trim(req.body.where))
+  ) {
     return res.status(500).json({ message: "Enter correct email, please." });
   }
 
