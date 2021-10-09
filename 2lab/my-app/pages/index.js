@@ -8,10 +8,10 @@ import { useState } from "react";
 
 export default function Home() {
   const [visibilityOfSpiner, setVisibility] = useState(false);
-  const [disabledButton, setDisabledButoon] = useState('');
+  const [disabledButton, setDisabledButoon] = useState("");
   const [visibilityOfAlert, setVisibilityAlert] = useState(false);
-  const [textOfAlert, setTextAlert] = useState('');
-  const [colorOfAlert, setColorAlert] = useState('');
+  const [textOfAlert, setTextAlert] = useState("");
+  const [colorOfAlert, setColorAlert] = useState("");
 
   function prevent(event) {
     event.preventDefault();
@@ -46,19 +46,19 @@ export default function Home() {
           return resp.json();
         })
         .then((data) => {
-            setVisibilityAlert(true);
-            setTextAlert(data.messuage);
-            setColorAlert(data.color);
+          setVisibilityAlert(true);
+          setTextAlert(data.messuage);
+          setColorAlert(data.color);
         })
         .catch((e) => {
-          setTextAlert('Error while sending');
-          setColorAlert('red');
+          setTextAlert("Error while sending");
+          setColorAlert("red");
           return;
         });
     } else {
       setVisibilityAlert(true);
-      setTextAlert('Enter correct information and fill all fields of form!');
-      setColorAlert('red');
+      setTextAlert("Enter correct information and fill all fields of form!");
+      setColorAlert("red");
     }
   }
 
@@ -94,9 +94,17 @@ export default function Home() {
         <section className={styles.formContainer}>
           <div className={styles.formMail}>
             <form id="emailForm" onSubmit={prevent}>
-              <InputEmail id='senderEmail' labelText='Enter your email:' disabled=''/>
-              <InputEmail id='sendFor' labelText='Enter recipient&rsquo;s e-mail:' disabled=''/>
-              <InputText formId='emailForm' />
+              <InputEmail
+                id="senderEmail"
+                labelText="Enter your email:"
+                disabled=""
+              />
+              <InputEmail
+                id="sendFor"
+                labelText="Enter recipient&rsquo;s e-mail:"
+                disabled=""
+              />
+              <InputText formId="emailForm" />
               <div className={styles.buttonContainer}>
                 <div className={styles.buttonWrap}>
                   <button
