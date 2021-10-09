@@ -5,6 +5,7 @@
   "scripts": {
     "prepare": "husky install"
   },
+  "workspaces": ["2lab/my-app"],
   "name": "web-development",
   "version": "1.0.0",
   "main": "index.js",
