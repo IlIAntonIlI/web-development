@@ -1,4 +1,5 @@
 import sanitizeHtml from "sanitize-html";
+
 import { validateEmail } from "../index";
 const nodemailer = require("nodemailer");
 const rateLimit = require("lambda-rate-limiter")({
@@ -34,8 +35,8 @@ export default async function handler(req, res) {
   }
 
   if (
-    !validateEmail(trim(req.body.from)) ||
-    !validateEmail(trim(req.body.where))
+    !validateEmail(req.body.from.trim()) ||
+    !validateEmail(req.body.where.trim())
   ) {
     return res.status(500).json({ message: "Enter correct email, please." });
   }
