@@ -1,18 +1,9 @@
 import stylesAlert from "./alert.module.scss";
 import Head from "next/head";
-import { useEffect, useRef } from "react";
 
 export default function Alert({ visibility, text, color, close }) {
-  const rootEl = useRef(null);
-
-  useEffect(() => {
-    const onClick = (e) => rootEl.current.contains(e.target) || close();
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  });
   return (
     <div
-      ref={rootEl}
       className={
         visibility
           ? color == "green"

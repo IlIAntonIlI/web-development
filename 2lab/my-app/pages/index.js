@@ -2,16 +2,17 @@ import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import Spiner from "../components/spiner/spiner";
 import Alert from "../components/alert/alert";
+import InputEmail from "../components/inputEmail/inputEmail";
+import InputText from "../components/inputText/inputText";
 import { useState } from "react";
 
 export default function Home() {
   const [visibilityOfSpiner, setVisibility] = useState(false);
-  const [disabledButton, setDisabledButoon] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
-  const [errorText, setErrorText] = useState("");
+  const [disabledButton, setDisabledButoon] = useState('');
   const [visibilityOfAlert, setVisibilityAlert] = useState(false);
-  const [textOfAlert, setTextAlert] = useState("");
-  const [colorOfAlert, setColorAlert] = useState("");
+  const [textOfAlert, setTextAlert] = useState('');
+  const [colorOfAlert, setColorAlert] = useState('');
+
   function prevent(event) {
     event.preventDefault();
     checkInfo(event);
@@ -45,50 +46,19 @@ export default function Home() {
           return resp.json();
         })
         .then((data) => {
-          if (data.sended) {
             setVisibilityAlert(true);
             setTextAlert(data.messuage);
-            setColorAlert("green");
-            return;
-          }
-          if (!data.sended) {
-            setVisibilityAlert(true);
-            setTextAlert(data.error);
-            setColorAlert("red");
-            return;
-          }
+            setColorAlert(data.color);
         })
         .catch((e) => {
-          setTextAlert("Error while sending");
-          setColorAlert("red");
+          setTextAlert('Error while sending');
+          setColorAlert('red');
           return;
         });
     } else {
       setVisibilityAlert(true);
-      setTextAlert("Enter correct information and fill all fields of form!");
-      setColorAlert("red");
-    }
-  }
-
-  function checkValidation(event) {
-    const email = event.target.value;
-    if (email === "") {
-      setErrorEmail("The field must be not empty!");
-      if (!event.target.classList.contains(styles.redBorder)) {
-        event.target.classList.add(styles.redBorder);
-      }
-      return;
-    }
-    if (validateEmail(email)) {
-      setErrorEmail("");
-      if (event.target.classList.contains(styles.redBorder)) {
-        event.target.classList.remove(styles.redBorder);
-      }
-      return;
-    }
-    setErrorEmail("The text you entered is not an email address!");
-    if (!event.target.classList.contains(styles.redBorder)) {
-      event.target.classList.add(styles.redBorder);
+      setTextAlert('Enter correct information and fill all fields of form!');
+      setColorAlert('red');
     }
   }
 
@@ -96,21 +66,6 @@ export default function Home() {
     const re =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
-  }
-
-  function checkIsEmpty(event) {
-    const text = event.target.value;
-    if (text === "") {
-      setErrorText("The field must be not empty!");
-      if (!event.target.classList.contains(styles.redBorder)) {
-        event.target.classList.add(styles.redBorder);
-      }
-      return;
-    }
-    setErrorText("");
-    if (event.target.classList.contains(styles.redBorder)) {
-      event.target.classList.remove(styles.redBorder);
-    }
   }
 
   const closeFunction = function () {
@@ -139,42 +94,9 @@ export default function Home() {
         <section className={styles.formContainer}>
           <div className={styles.formMail}>
             <form id="emailForm" onSubmit={prevent}>
-              <div className={styles.formControl}>
-                <label htmlFor="SenderEmail">Your e-mail:</label> <br />
-                <input
-                  type="email"
-                  id="senderEmail"
-                  maxLength="40"
-                  value="alvah.zulauf@ethereal.email"
-                  disabled
-                  required
-                />
-                <p className={styles.error}></p>
-              </div>
-              <div className={styles.formControl}>
-                <label htmlFor="SendFor">Enter recipient&rsquo;s e-mail:</label>{" "}
-                <br />
-                <input
-                  type="email"
-                  id="sendFor"
-                  maxLength="40"
-                  placeholder="Recipient's email address here..."
-                  onChange={checkValidation}
-                  required
-                />
-                <p className={styles.error}>{errorEmail}</p>
-              </div>
-              <div className={styles.formControlText}>
-                <label htmlFor="Messuage">Enter messuage:</label> <br />
-                <textarea
-                  form="emailForm"
-                  placeholder="Text of the messuage here..."
-                  onChange={checkIsEmpty}
-                  id="messuage"
-                  required
-                ></textarea>
-                <p className={styles.error}>{errorText}</p>
-              </div>
+              <InputEmail id='senderEmail' labelText='Enter your email:' disabled=''/>
+              <InputEmail id='sendFor' labelText='Enter recipient&rsquo;s e-mail:' disabled=''/>
+              <InputText formId='emailForm' />
               <div className={styles.buttonContainer}>
                 <div className={styles.buttonWrap}>
                   <button

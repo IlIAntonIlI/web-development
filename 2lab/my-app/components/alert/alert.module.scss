@@ -11,11 +11,11 @@
   display: flex;
 }
 
-@media (max-height: 999px) {
+@media (max-height: 899px) {
   .text {
     width: 90%;
     height: 100%;
-    font-size: var(--font-size-short-phone);
+    font-size: calc(var(--font-size-short-phone)*2);
     color: var(--color-white);
     padding: 5%;
     display: flex;
@@ -27,7 +27,7 @@
     width: 10%;
     padding-right: 5px;
     padding-top: 5px;
-    font-size: var(--font-size-short-phone);
+    font-size: calc(var(--font-size-short-phone)*2);
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
@@ -43,7 +43,7 @@
   .text {
     width: 90%;
     height: 100%;
-    font-size: var(--font-size-narrow-phone);
+    font-size: calc(var(--font-size-narrow-phone)*2);
     color: var(--color-white);
     padding: 5%;
     display: flex;
@@ -55,7 +55,7 @@
     width: 10%;
     padding-right: 5px;
     padding-top: 5px;
-    font-size: var(--font-size-narrow-phone);
+    font-size: calc(var(--font-size-narrow-phone)*2);
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
@@ -67,11 +67,11 @@
   }
 }
 
-@media (min-height: 1000px) and (min-width: 800px) {
+@media (min-height: 900px) and (min-width: 800px) {
   .text {
     width: 90%;
     height: 100%;
-    font-size: calc(var(--font-size-desktop) * 2);
+    font-size: calc(var(--font-size-desktop)*2);
     color: var(--color-white);
     padding: 5%;
     display: flex;

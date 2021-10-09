@@ -1,3 +1,8 @@
+.globalContainer{
+  width: 100%;
+  height: 100%;
+}
+
 .container {
   height: 80vh;
   width: 32vw;
@@ -32,7 +37,7 @@
     width: 100%;
     background: var(--form-background-color-grey);
     border-radius: 5px;
-    padding-top: 10%;
+    padding-top: 5%;
     display: flex;
     justify-content: center;
     z-index: 1;
@@ -41,8 +46,8 @@
   .formMail {
     position: absolute;
     width: 90%;
-    height: 60vh;
-    padding: 10px;
+    height: 85%;
+    padding: 2%;
     z-index: 3;
   }
 }
@@ -56,24 +61,6 @@
   background: var(--color-white);
   opacity: 0.2;
   z-index: 2;
-}
-
-.formControl {
-  width: 100%;
-  height: 20%;
-}
-
-.formControlText {
-  width: 100%;
-  height: 50%;
-}
-
-.error {
-  font-size: 0.8em;
-  color: var(--font-color-light-red);
-  font-weight: 300;
-  letter-spacing: 1px;
-  margin-top: 1%;
 }
 
 .buttonContainer {
@@ -95,13 +82,3 @@
   align-items: center;
 }
 
-.redBorder {
-  border: solid 2.5px var(--border-color-light-red);
-  transition: 0.5s linear;
-}
-
-.redBorder:focus {
-  outline: none;
-  border: solid 2.5px var(--border-color-light-red);
-  transition: 0.5s linear;
-}
