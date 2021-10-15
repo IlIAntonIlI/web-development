@@ -1,4 +1,4 @@
 {
   "plugins": ["sonarjs"],
-  "extends": ["next/core-web-vitals","plugin:sonarjs/recommended"]
+  "extends": ["next/core-web-vitals", "plugin:sonarjs/recommended"]
 }
