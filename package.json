@@ -1,14 +1,11 @@
 {
-  "devDependencies": {
-    "husky": "^7.0.2"
-  },
-  "scripts": {
-    "prepare": "husky install"
-  },
   "workspaces": ["2lab/my-app"],
   "name": "web-development",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "prepare": "husky install"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IlIAntonIlI/web-development.git"
@@ -19,5 +16,8 @@
     "url": "https://github.com/IlIAntonIlI/web-development/issues"
   },
   "homepage": "https://github.com/IlIAntonIlI/web-development#readme",
+  "devDependencies": {
+    "husky": "^7.0.2"
+  },
   "description": ""
 }

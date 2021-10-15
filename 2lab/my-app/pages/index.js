@@ -25,18 +25,18 @@ export default function Home() {
   }
 
   function checkInfo(event) {
-    const fisrtEmail = event.target.elements.senderEmail.value;
+    //const fisrtEmail = event.target.elements.senderEmail.value;
     const secondEmail = event.target.elements.sendFor.value;
     const messuage = event.target.elements.messuage.value;
     setDisabledButoon(!"");
     if (
-      validateEmail(fisrtEmail) &&
+      //validateEmail(fisrtEmail) &&
       validateEmail(secondEmail) &&
       messuage !== ""
     ) {
       setVisibility(true);
       const bodyToSend = {
-        from: fisrtEmail,
+        from: process.env.USERNAME,
         where: secondEmail,
         letter: messuage,
       };
@@ -53,8 +53,8 @@ export default function Home() {
         })
         .then((data) => {
           setVisibilityAlert(true);
-          setTextAlert(data.messuage);
-          setColorAlert(data.color);
+          setTextAlert(data.meta.data.messuage);
+          setColorAlert(data.meta.data.color);
         })
         .catch((e) => {
           setTextAlert("Error while sending");
@@ -94,14 +94,14 @@ export default function Home() {
         <section className={styles.formContainer}>
           <div className={styles.formMail}>
             <form id="emailForm" onSubmit={prevent}>
-              <InputEmail
+              {/* <InputEmail
                 id="senderEmail"
                 labelText="Enter your email:"
                 disabled=""
-              />
+              /> */}
               <InputEmail
                 id="sendFor"
-                labelText="Enter recipient&rsquo;s e-mail:"
+                labelText="Enter your e-mail:"
                 disabled=""
               />
               <InputText formId="emailForm" />
