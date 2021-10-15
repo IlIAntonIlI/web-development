@@ -6,12 +6,13 @@ const rateLimit = require("lambda-rate-limiter")({
   interval: 60 * 1000, // Our rate-limit interval, one minute
 }).check;
 
+const header = "x-forwarded-for";
 export default async function handler(req, res) {
   try {
-    await rateLimit(3, req.headers["x-forwarded-for"]);
+    await rateLimit(3, req.headers[header]);
   } catch (error) {
     return res.json({
-      id: new Date() + " rate limit" + req.headers["x-forwarded-for"],
+      id: new Date() + " rate limit" + req.headers[header],
       links: {
         about: error.about,
       },
@@ -46,7 +47,7 @@ export default async function handler(req, res) {
   for (let key in req.body) {
     if (!req.body[key]) {
       return res.json({
-        id: new Date() + " empty fields" + req.headers["x-forwarded-for"],
+        id: new Date() + " empty fields" + req.headers[header],
         status: "500",
         title: "Fields must be not empty",
         detail: "User dont fill all fields",
@@ -62,7 +63,7 @@ export default async function handler(req, res) {
 
   if (!validateEmail(req.body.where.trim())) {
     return res.json({
-      id: new Date() + " uncorrect email" + req.headers["x-forwarded-for"],
+      id: new Date() + " uncorrect email" + req.headers[header],
       status: "500",
       title: "Uncorrect email",
       detail: "User enter uncorrect email",

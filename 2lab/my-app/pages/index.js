@@ -36,7 +36,6 @@ export default function Home() {
     ) {
       setVisibility(true);
       const bodyToSend = {
-        from: process.env.USERNAME,
         where: secondEmail,
         letter: messuage,
       };
@@ -59,7 +58,6 @@ export default function Home() {
         .catch((e) => {
           setTextAlert("Error while sending");
           setColorAlert("red");
-          return;
         });
     } else {
       setVisibilityAlert(true);
