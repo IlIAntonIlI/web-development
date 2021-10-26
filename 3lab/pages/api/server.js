@@ -5,7 +5,7 @@ const rateLimit = require("lambda-rate-limiter")({
 const header = "x-forwarded-for";
 export default async function handler(req, res) {
   try {
-    await rateLimit(10, req.headers[header]);
+    await rateLimit(2, req.headers[header]);
   } catch (error) {
     return res.json({
       id: new Date() + " rate limit" + req.headers[header],
