@@ -1,0 +1,23 @@
+{
+  "name": "web-development",
+  "workspaces": ["3lab"],
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "husky": "^7.0.4"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IlIAntonIlI/web-development.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IlIAntonIlI/web-development/issues"
+  },
+  "homepage": "https://github.com/IlIAntonIlI/web-development#readme"
+}

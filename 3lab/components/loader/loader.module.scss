@@ -1,0 +1,18 @@
+.loader-container {
+  height: 40vh;
+  left: calc((100% - 40vw) / 2);
+  position: absolute;
+  top: 300px;
+  width: 40vw;
+  z-index: 2;
+
+  div {
+    bottom: 2px;
+    display: flex;
+    font-size: 3vw;
+    justify-content: center;
+    letter-spacing: 1px;
+    position: absolute;
+    width: 40vw;
+  }
+}
