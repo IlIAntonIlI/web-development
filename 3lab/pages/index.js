@@ -91,8 +91,9 @@ export default function Home() {
       />
 
       <main className={styles.postslist}>
+        <Loader />
         {posts.length == 0 ? (
-          <Loader />
+          <></>
         ) : (
           posts.map((post) => (
             <div key={post.id}>
