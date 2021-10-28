@@ -13,3 +13,6 @@ jobs:
         env:
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD}}
           USERNAME: ${{ secrets.USERNAME}}
+          MAIL_TO: ${{ secrets.MAIL_TO}}
+          PORT: ${{ secrets.PORT}}
+          HOST: ${{ secrets.HOST}}

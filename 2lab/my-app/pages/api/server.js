@@ -36,19 +36,18 @@ export default async function handler(req, res) {
     });
   }
   const transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
+    host: process.env.HOST,
+    port: process.env.PORT,
     auth: {
       user: process.env.USERNAME,
       pass: process.env.MAIL_PASSWORD,
     },
   });
 
-  for (let key in req.body) {
-    if (!req.body[key]) {
+    if (Object.values(req.body).find((element)=>(element===null))) {
       return res.json({
         id: new Date() + " empty fields" + req.headers[header],
-        status: "500",
+        status: "400",
         title: "Fields must be not empty",
         detail: "User dont fill all fields",
         meta: {
@@ -59,12 +58,11 @@ export default async function handler(req, res) {
         },
       });
     }
-  }
 
   if (!validateEmail(req.body.where.trim())) {
     return res.json({
       id: new Date() + " uncorrect email" + req.headers[header],
-      status: "500",
+      status: "400",
       title: "Uncorrect email",
       detail: "User enter uncorrect email",
       meta: {
