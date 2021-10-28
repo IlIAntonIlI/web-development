@@ -44,20 +44,20 @@ export default async function handler(req, res) {
     },
   });
 
-    if (Object.values(req.body).find((element)=>(element===null))) {
-      return res.json({
-        id: new Date() + " empty fields" + req.headers[header],
-        status: "400",
-        title: "Fields must be not empty",
-        detail: "User dont fill all fields",
-        meta: {
-          data: {
-            messuage: "All fields must not be empty!",
-            color: "red",
-          },
+  if (Object.values(req.body).find((element) => element === null)) {
+    return res.json({
+      id: new Date() + " empty fields" + req.headers[header],
+      status: "400",
+      title: "Fields must be not empty",
+      detail: "User dont fill all fields",
+      meta: {
+        data: {
+          messuage: "All fields must not be empty!",
+          color: "red",
         },
-      });
-    }
+      },
+    });
+  }
 
   if (!validateEmail(req.body.where.trim())) {
     return res.json({
