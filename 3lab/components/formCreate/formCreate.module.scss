@@ -40,22 +40,22 @@
     margin: 1%;
     position: relative;
     width: 26.5px;
-  }
 
-  div::after {
-    bottom: 0;
-    color: var(--color-white);
-    content: '\274c';
-    font-size: 20px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    text-align: center;
-    top: -1px;
-  }
+    &::after {
+      bottom: 0;
+      color: var(--color-white);
+      content: '\274c';
+      font-size: 20px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: -1px;
+    }
 
-  div:hover {
-    cursor: pointer;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
@@ -105,10 +105,10 @@
     @media (max-height: 280px) {
       font-size: calc(1.5 * var(--font-size-short-phone));
     }
-  }
 
-  input:focus {
-    outline: none;
+    &:focus {
+      outline: none;
+    }
   }
 
   textarea {
@@ -131,10 +131,10 @@
     @media (max-height: 400px) {
       font-size: calc(1.5 * var(--font-size-short-phone));
     }
-  }
 
-  textarea:focus {
-    outline: none;
+    &:focus {
+      outline: none;
+    }
   }
 
   .text-input {
@@ -186,16 +186,16 @@
       height: 70%;
       transition: 0.5s linear;
       width: 90%;
-    }
 
-    button:hover {
-      background: var(--color-green);
-      border: solid 1px var(--color-green);
-      color: var(--color-white);
-      cursor: pointer;
-      height: 70%;
-      transition: 0.5s linear;
-      word-wrap: break-word;
+      &:hover {
+        background: var(--color-green);
+        border: solid 1px var(--color-green);
+        color: var(--color-white);
+        cursor: pointer;
+        height: 70%;
+        transition: 0.5s linear;
+        word-wrap: break-word;
+      }
     }
   }
 }

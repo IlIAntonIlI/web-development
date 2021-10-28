@@ -1,14 +1,16 @@
 import Head from "next/head";
 import Header from "/components/header/header";
 import Footer from "/components/footer/footer";
+import Alert from "/components/alert/alert";
 import Loader from "/components/loader/loader";
 import styles from "./[id].module.scss";
-import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function Post({ route }) {
-  //const router = useRouter();
   const [posts, setPosts] = useState([]);
+  const [visibilityOfAlert, setVisibilityAlert] = useState(false);
+  const [textOfAlert, setTextAlert] = useState("");
+  const [colorOfAlert, setColorAlert] = useState("");
 
   async function fetchGraphQL(operationsDoc, operationName, variables) {
     const result = await fetch(
@@ -45,22 +47,26 @@ export default function Post({ route }) {
     const { errors, data } = await fetchMyQuery();
 
     if (errors) {
-      // handle those errors like a pro
-      console.error(errors);
+      setVisibilityAlert(true);
+      setTextAlert("Error while fetching data");
+      setColorAlert("red");
     }
-    console.log(data);
-    // do something great with this precious data
     if (posts.length == 0) {
       setPosts(data.posts);
     }
   }
 
   startFetchMyQuery();
-  console.log(route);
+
+  const closingFunction = function () {
+    if (visibilityOfAlert) {
+      setVisibilityAlert(false);
+    }
+  };
   return (
     <>
       <Head>
-        <title>{posts[0].Theme}</title>
+        <title>{posts.length ? posts[0].Theme : route}</title>
       </Head>
       <Header />
 
@@ -69,6 +75,12 @@ export default function Post({ route }) {
           <Loader />
         ) : (
           <>
+            <Alert
+              visibility={visibilityOfAlert}
+              text={textOfAlert}
+              color={colorOfAlert}
+              close={closingFunction}
+            />
             <h1>{posts[0].Theme}</h1>
             <br />
             <h2>Author: {posts[0].author}</h2>
@@ -76,6 +88,7 @@ export default function Post({ route }) {
             <h2>Date of creation: {posts[0].date}</h2>
             <br />
             <span>{posts[0].postText}</span>
+            {}
           </>
         )}
       </main>

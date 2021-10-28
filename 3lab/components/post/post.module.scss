@@ -91,12 +91,12 @@
     text-align: end;
     transition: 0.5s linear;
     width: auto;
-  }
 
-  div:hover {
-    color: var(--font-color-post-button-hover);
-    cursor: pointer;
-    text-decoration: underline;
-    transition: 0.5s linear;
+    &:hover {
+      color: var(--font-color-post-button-hover);
+      cursor: pointer;
+      text-decoration: underline;
+      transition: 0.5s linear;
+    }
   }
 }

@@ -9,7 +9,7 @@ export default function Loader() {
         layout="fill"
         alt="Loader with cat at circle"
       />
-      <div>L o a d i n g...</div>
+      <div>L o a d i n g</div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Spiner from "../spiner/spiner";
 import Alert from "../alert/alert";
 import Head from "next/head";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Form({ visibility, closeFunction, refreshData }) {
   const [visibilityOfSpiner, setVisibilityOfSpiner] = useState(false);
@@ -10,12 +11,13 @@ export default function Form({ visibility, closeFunction, refreshData }) {
   const [visibilityOfAlert, setVisibilityAlert] = useState(false);
   const [textOfAlert, setTextAlert] = useState("");
   const [colorOfAlert, setColorAlert] = useState("");
+  const router = useRouter();
   const closingFunction = function () {
     if (visibilityOfAlert) {
       setVisibilityAlert(false);
       setDisabledButton(false);
       setVisibilityOfSpiner(false);
-      refreshData();
+      if (router.pathname === "/") refreshData();
     }
   };
   function handleSubmit(e) {
@@ -66,13 +68,10 @@ export default function Form({ visibility, closeFunction, refreshData }) {
                     }
                 `;
 
-          function fetchMyQuery() {
-            return fetchGraphQL(operationsDoc, "MyQuery", {});
-          }
-
           function executeMyMutation() {
             return fetchGraphQL(operationsDoc, "MyMutation", {});
           }
+
           let color = data.meta.data.color;
           async function startExecuteMyMutation() {
             const { errors, data } = await executeMyMutation();

@@ -94,22 +94,22 @@
       margin: 1%;
       position: relative;
       width: 26.5px;
-    }
 
-    div::after {
-      bottom: 0;
-      color: var(--color-white);
-      content: '\274c';
-      font-size: 20px;
-      left: 0;
-      position: absolute;
-      right: 0;
-      text-align: center;
-      top: -1px;
-    }
+      &::after {
+        bottom: 0;
+        color: var(--color-white);
+        content: '\274c';
+        font-size: 20px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: -1px;
+      }
 
-    div:hover {
-      cursor: pointer;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

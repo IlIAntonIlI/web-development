@@ -33,16 +33,16 @@
         font-size: calc(1.5 * var(--font-size-narrow-phone));
         margin-right: 2%;
       }
-    }
 
-    div:hover {
-      color: var(--color-green);
-      cursor: pointer;
-      transform: translate(3px, -3px);
-      transition: 0.5s linear;
-
-      i {
-        text-shadow: -3px 3px 1px var(--color-medium-transparent-grey);
+      &:hover {
+        color: var(--color-green);
+        cursor: pointer;
+        transform: translate(3px, -3px);
+        transition: 0.5s linear;
+  
+        i {
+          text-shadow: -3px 3px 1px var(--color-medium-transparent-grey);
+        }
       }
     }
   }
@@ -80,16 +80,16 @@
         font-size: calc(2.5 * var(--font-size-narrow-phone));
         margin-right: 2%;
       }
-    }
 
-    div:hover {
-      color: var(--color-green);
-      cursor: pointer;
-      transform: translate(3px, -3px);
-      transition: 0.5s linear;
-
-      i {
-        text-shadow: -3px 3px 1px var(--color-medium-transparent-grey);
+      &:hover {
+        color: var(--color-green);
+        cursor: pointer;
+        transform: translate(3px, -3px);
+        transition: 0.5s linear;
+  
+        i {
+          text-shadow: -3px 3px 1px var(--color-medium-transparent-grey);
+        }
       }
     }
   }
@@ -123,18 +123,19 @@
         font-size: calc(2.5 * var(--font-size-standart));
         margin-right: 2%;
       }
-    }
 
-    div:hover {
-      color: var(--color-green);
-      cursor: pointer;
-      transform: translate(3px, -3px);
-      transition: 0.5s linear;
-
-      i {
-        text-shadow: -3px 3px 1px var(--color-medium-transparent-grey);
+      &:hover {
+        color: var(--color-green);
+        cursor: pointer;
+        transform: translate(3px, -3px);
+        transition: 0.5s linear;
+  
+        i {
+          text-shadow: -3px 3px 1px var(--color-medium-transparent-grey);
+        }
       }
     }
+
   }
 }
 
