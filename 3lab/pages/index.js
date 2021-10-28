@@ -89,13 +89,14 @@ export default function Home() {
         color={colorOfAlert}
         close={closingFunction}
       />
-
-      <main className={styles.postslist}>
-        <Loader />
-        {posts.length == 0 ? (
-          <></>
-        ) : (
-          posts.map((post) => (
+      {posts.length === 0 ? (
+        <>
+          <main className={styles.postslist}></main>
+          <Loader />
+        </>
+      ) : (
+        <main className={styles.postslist}>
+          {posts.map((post) => (
             <div key={post.id}>
               <Post
                 theme={post.Theme}
@@ -105,9 +106,9 @@ export default function Home() {
                 date={post.date}
               />
             </div>
-          ))
-        )}
-      </main>
+          ))}
+        </main>
+      )}
 
       <Footer />
     </>
