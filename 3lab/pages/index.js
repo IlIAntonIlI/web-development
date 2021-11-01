@@ -6,108 +6,83 @@ import Footer from "/components/footer/footer";
 import Alert from "/components/alert/alert";
 import Loader from "/components/loader/loader";
 import { useState } from "react";
+import React from "react";
+import { useSubscription } from "urql";
+import { useQuery } from "urql";
 
+const MyPosts = `
+query {
+  posts(order_by: {date: desc}) {
+    author
+    id
+    postText
+    date
+    Theme
+  }
+}`;
+const newPosts = `
+subscription {
+  posts(order_by: {date: desc}) {
+    author
+    id
+    postText
+    date
+    Theme
+  }
+}`;
 export default function Home() {
-  const [posts, setPosts] = useState([]);
   const [visibilityOfAlert, setVisibilityAlert] = useState(false);
   const [textOfAlert, setTextAlert] = useState("");
   const [colorOfAlert, setColorAlert] = useState("");
-  async function fetchGraphQL(operationsDoc, operationName, variables) {
-    const result = await fetch(
-      "https://web-kpi-lab3.herokuapp.com/v1/graphql",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          query: operationsDoc,
-          variables: variables,
-          operationName: operationName,
-        }),
-      }
-    );
-
-    return await result.json();
-  }
-
-  const operationsDoc = `
-    query MyQuery {
-      posts(order_by: {date: desc}) {
-        author
-        id
-        postText
-        date
-        Theme
-      }
-    }
-  `;
-
-  function fetchMyQuery() {
-    return fetchGraphQL(operationsDoc, "MyQuery", {});
-  }
-
-  async function startMyFetch() {
-    const { errors, data } = await fetchMyQuery();
-
-    if (errors) {
-      setVisibilityAlert(true);
-      setTextAlert("Error while fetching data");
-      setColorAlert("red");
-    }
-    if (posts.length == 0) {
-      setPosts(data.posts);
-    }
-  }
-  startMyFetch();
-
-  async function refreshData() {
-    const { errors, data } = await fetchMyQuery();
-
-    if (errors) {
-      setVisibilityAlert(true);
-      setTextAlert("Error while fetching data");
-      setColorAlert("red");
-    }
-    if (posts.length != data.posts.length) {
-      setPosts(data.posts);
-    }
-  }
 
   const closingFunction = function () {
     if (visibilityOfAlert) {
       setVisibilityAlert(false);
     }
   };
+  const [result] = useSubscription({
+    query: newPosts,
+  });
 
+  const { data, fetching, error } = result;
+  if (error) {
+    setVisibilityAlert(true);
+    setTextAlert("Error while fetching data");
+    setColorAlert("red");
+  }
   return (
     <>
       <Head>
         <title>Stories</title>
       </Head>
-      <Header refreshData={refreshData} />
+      <Header />
       <Alert
         visibility={visibilityOfAlert}
         text={textOfAlert}
         color={colorOfAlert}
         close={closingFunction}
       />
-      {posts.length === 0 ? (
+      {fetching || error ? (
         <>
           <main className={styles.postslist}></main>
           <Loader />
         </>
-      ) : (
+      ) : data.posts.length !== 0 ? (
         <main className={styles.postslist}>
-          {posts.map((post) => (
+          {data.posts.map((post) => (
             <div key={post.id}>
               <Post
                 theme={post.Theme}
                 id={post.id}
                 author={post.author}
                 text={post.postText}
-                date={post.date}
+                date={post.date.slice(0, 10) + " | " + post.date.slice(11, 19)}
               />
             </div>
           ))}
         </main>
+      ) : (
+        <main className={styles.postslist}></main>
       )}
 
       <Footer />

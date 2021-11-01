@@ -14,10 +14,13 @@
     "format:fix": "prettier . --write --ignore-path .prettierignore"
   },
   "dependencies": {
+    "graphql": "^15.7.2",
     "lambda-rate-limiter": "^3.0.1",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "subscriptions-transport-ws": "^0.9.19",
+    "urql": "^2.0.5"
   },
   "devDependencies": {
     "eslint": "7.32.0",

@@ -17,7 +17,7 @@ export default function Form({ visibility, closeFunction, refreshData }) {
       setVisibilityAlert(false);
       setDisabledButton(false);
       setVisibilityOfSpiner(false);
-      if (router.pathname === "/") refreshData();
+      // if (router.pathname === "/") refreshData();
     }
   };
   function handleSubmit(e) {
