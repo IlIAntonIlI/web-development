@@ -21,9 +21,5 @@
   "bugs": {
     "url": "https://github.com/IlIAntonIlI/web-development/issues"
   },
-  "homepage": "https://github.com/IlIAntonIlI/web-development#readme",
-  "dependencies": {
-    "websocket": "^1.0.34",
-    "ws": "^8.2.3"
-  }
+  "homepage": "https://github.com/IlIAntonIlI/web-development#readme"
 }
