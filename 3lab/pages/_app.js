@@ -2,12 +2,12 @@ import "../styles/globals.scss";
 import { Provider } from "urql";
 import { Client, defaultExchanges, subscriptionExchange } from "urql";
 import { SubscriptionClient } from "subscriptions-transport-ws";
-var WebSocketClient = require("websocket").client;
+//import WebSocketClient from ("websocket").client;
 
 const subscriptionClient = new SubscriptionClient(
   "ws://web-kpi-lab3.herokuapp.com/v1/graphql",
   { reconnect: true },
-  WebSocketClient
+  //WebSocketClient
 );
 
 const client = new Client({
