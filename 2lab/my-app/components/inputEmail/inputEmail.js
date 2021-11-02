@@ -34,7 +34,7 @@ export default function InputEmail({ id, disabled, labelText }) {
         type="email"
         id={id}
         maxLength="40"
-        placeholder="Recipient's email address here..."
+        placeholder="Your email address here..."
         onChange={checkValidation}
         disabled={disabled}
         required
