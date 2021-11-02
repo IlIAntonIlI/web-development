@@ -85,10 +85,12 @@ export default function Post({ route }) {
             <br />
             <h2>Author: {posts[0].author}</h2>
             <br />
-            <h2>Date of creation: {posts[0].date}</h2>
+            <h2>
+              Date of creation:{" "}
+              {posts[0].date.slice(0, 10) + " | " + posts[0].date.slice(11, 19)}
+            </h2>
             <br />
             <span>{posts[0].postText}</span>
-            {}
           </>
         )}
       </main>
