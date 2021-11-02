@@ -1,6 +1,6 @@
 .form-container {
   animation: appearing 0.5s linear;
-  background: #fceda5;
+  background: var(--color-background-color-form);
   border: solid 1px var(--color-green);
   border-radius: 5px;
   left: 27.5%;
