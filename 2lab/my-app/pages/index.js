@@ -89,8 +89,8 @@ export default function Home() {
           close={closeFunction}
         />
         <h1>Form for sending messages</h1>
-        <section className={styles.formContainer}>
-          <div className={styles.formMail}>
+        <section className={styles["form-container"]}>
+          <div className={styles["form-mail"]}>
             <form id="emailForm" onSubmit={prevent}>
               {/* <InputEmail
                 id="senderEmail"
@@ -103,8 +103,8 @@ export default function Home() {
                 disabled=""
               />
               <InputText formId="emailForm" />
-              <div className={styles.buttonContainer}>
-                <div className={styles.buttonWrap}>
+              <div className={styles["button-container"]}>
+                <div className={styles["button-wrap"]}>
                   <button
                     type="submit"
                     id="sendButton"
@@ -113,13 +113,13 @@ export default function Home() {
                     Send
                   </button>
                 </div>
-                <div className={styles.spinnerWrap}>
+                <div className={styles["spinner-wrap"]}>
                   <Spiner visibility={visibilityOfSpiner} />
                 </div>
               </div>
             </form>
           </div>
-          <div className={styles.imgBackground}></div>
+          <div className={styles["img-background"]}></div>
         </section>
       </div>
     </>

@@ -1,4 +1,4 @@
-.globalContainer {
+.global-container {
   width: 100%;
   height: 100%;
 }
@@ -9,7 +9,7 @@
 }
 
 @media (min-height: 1000px) {
-  .formContainer {
+  .form-container {
     position: relative;
     height: 700px;
     width: 100%;
@@ -21,7 +21,7 @@
     z-index: 1;
   }
 
-  .formMail {
+  .form-mail {
     position: absolute;
     width: 90%;
     height: 600px;
@@ -31,7 +31,7 @@
 }
 
 @media (max-height: 999px) {
-  .formContainer {
+  .form-container {
     position: relative;
     height: 70vh;
     width: 100%;
@@ -43,7 +43,7 @@
     z-index: 1;
   }
 
-  .formMail {
+  .form-mail {
     position: absolute;
     width: 90%;
     height: 85%;
@@ -52,30 +52,30 @@
   }
 }
 
-.imgBackground {
+.img-background {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background: var(--color-white);
-  opacity: 0.2;
+  opacity: 20%;
   z-index: 2;
 }
 
-.buttonContainer {
+.button-container {
   height: 10%;
   width: 100%;
   display: flex;
 }
 
-.buttonWrap {
+.button-wrap {
   width: 50%;
   display: flex;
   align-items: flex-end;
 }
 
-.spinnerWrap {
+.spinner-wrap {
   width: 50%;
   padding-left: 20%;
   display: flex;

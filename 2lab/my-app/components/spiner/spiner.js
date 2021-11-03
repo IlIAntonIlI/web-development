@@ -6,8 +6,8 @@ export default function spiner({ visibility }) {
     <div
       className={
         visibility
-          ? stylesSpiner.loaderContainer
-          : stylesSpiner.loaderContainer + " " + stylesSpiner.hidden
+          ? stylesSpiner["loader-container"]
+          : stylesSpiner["loader-container"] + " " + stylesSpiner.hidden
       }
     >
       <Image

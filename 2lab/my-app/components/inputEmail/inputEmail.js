@@ -27,10 +27,10 @@ export default function InputEmail({ id, disabled, labelText }) {
     return re.test(email);
   }
   return (
-    <div className={styles.formControl}>
+    <div className={styles["form-control"]}>
       <label htmlFor={id}>{labelText}</label> <br />
       <input
-        className={inputEmailBorderColor == "red" ? styles.redBorder : ""}
+        className={inputEmailBorderColor == "red" ? styles["red-border"] : ""}
         type="email"
         id={id}
         maxLength="40"

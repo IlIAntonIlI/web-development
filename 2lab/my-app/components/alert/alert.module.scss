@@ -1,4 +1,4 @@
-.alertContainer {
+.alert-container {
   position: absolute;
   width: 30vw;
   height: 20vh;
@@ -23,7 +23,7 @@
     align-items: center;
   }
 
-  .closeButton {
+  .close-button {
     width: 10%;
     padding-right: 5px;
     padding-top: 5px;
@@ -51,7 +51,7 @@
     align-items: center;
   }
 
-  .closeButton {
+  .close-button {
     width: 10%;
     padding-right: 5px;
     padding-top: 5px;
@@ -79,7 +79,7 @@
     align-items: center;
   }
 
-  .closeButton {
+  .close-button {
     width: 10%;
     padding-right: 5px;
     padding-top: 5px;
@@ -95,11 +95,11 @@
   }
 }
 
-.greenBG {
+.green-background {
   background-color: var(--background-color-light-green);
 }
 
-.redBG {
+.red-background {
   background-color: var(--background-color-light-red);
 }
 

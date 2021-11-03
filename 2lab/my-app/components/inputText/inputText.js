@@ -15,10 +15,10 @@ export default function InputText({ formId }) {
     setInputTextBorderColor("");
   }
   return (
-    <div className={styles.formControlText}>
+    <div className={styles["form-control-text"]}>
       <label htmlFor="Messuage">Enter messuage:</label> <br />
       <textarea
-        className={inputTextBorderColor == "red" ? styles.redBorder : ""}
+        className={inputTextBorderColor == "red" ? styles["red-border"] : ""}
         form={formId}
         placeholder="Text of the messuage here..."
         onChange={checkIsEmpty}

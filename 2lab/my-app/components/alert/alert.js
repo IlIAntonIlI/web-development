@@ -1,23 +1,24 @@
 import stylesAlert from "./alert.module.scss";
 import Head from "next/head";
 
+const classAlertContainer = "alert-container";
 export default function Alert({ visibility, text, color, close }) {
   return (
     <div
       className={
         visibility
           ? color == "green"
-            ? stylesAlert.alertContainer +
+            ? stylesAlert[classAlertContainer] +
               " " +
-              stylesAlert.greenBG +
-              " " +
-              stylesAlert.move
-            : stylesAlert.alertContainer +
-              " " +
-              stylesAlert.redBG +
+              stylesAlert["green-background"] +
               " " +
               stylesAlert.move
-          : stylesAlert.hidden + " " + stylesAlert.alertContainer
+            : stylesAlert[classAlertContainer] +
+              " " +
+              stylesAlert["red-background"] +
+              " " +
+              stylesAlert.move
+          : stylesAlert.hidden + " " + stylesAlert[classAlertContainer]
       }
     >
       <Head>
@@ -29,7 +30,7 @@ export default function Alert({ visibility, text, color, close }) {
         ></link>
       </Head>
       <div className={stylesAlert.text}>{text}</div>
-      <div className={stylesAlert.closeButton}>
+      <div className={stylesAlert["close-button"]}>
         <i className="fas fa-times" onClick={close}></i>
       </div>
     </div>
