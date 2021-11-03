@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "workspaces":["4lab"],
   "scripts": {
     "prepare": "husky install"
   },

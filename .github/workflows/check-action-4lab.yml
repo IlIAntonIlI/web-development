@@ -1,0 +1,12 @@
+name: Format check
+on: [pull_request]
+jobs:
+  build_and_preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          cache: "npm"
+      - name: "Checking 4lab project" 
+        working-directory: 4lab
+        run: npm ci && npm run format && npm run lint && npm run lint:style
