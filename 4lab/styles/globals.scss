@@ -1,0 +1,31 @@
+* {
+  --color-close-open-burger-menu-button: rgb(145, 0, 0);
+  --slider-checked-slide-control-color: #95afc0;
+  --slider-controls-color: #fff;
+  --slider-shadow-color: rgb(98, 146, 235);
+  --slider-left-right-control-buttons-color: #dff9fb;
+  --background-color-burger-menu: #95afc0;
+  --color-section-burger-menu: #dff9fb;
+  --background-color-header: #dcdde1;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: var(--background-color-header);
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 70vh;
+  width: 100%;
+}
+
+input {
+  display: none;
+}

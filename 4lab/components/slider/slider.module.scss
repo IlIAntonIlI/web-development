@@ -1,0 +1,154 @@
+.slider-container {
+  box-shadow: 0 0 13px 0.1px var(--slider-shadow-color);
+  display: flex;
+  height: 60vh;
+  overflow: hidden;
+  position: relative;
+  width: 55vw;
+  z-index: 1;
+}
+
+.left-button-control,
+.right-button-control {
+  background: transparent;
+  height: 60vh;
+  position: absolute;
+  transition: 0.4s linear;
+  width: 20%;
+  z-index: 2;
+
+  label {
+    display: none;
+    height: 100%;
+    width: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &:hover {
+    background: var(--slider-left-right-control-buttons-color);
+    cursor: pointer;
+    opacity: 0.3;
+    transition: 0.4s linear;
+  }
+}
+
+.left-button-control {
+  left: 0;
+}
+
+.right-button-control {
+  right: 0;
+}
+
+.control-panel {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  height: 5vh;
+  justify-content: space-evenly;
+  left: 35%;
+  position: absolute;
+  width: 30%;
+  z-index: 2;
+
+  label {
+    background: var(--slider-controls-color);
+    height: 3px;
+    width: 2vw;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+#first:checked ~ .slider-container .control-panel label:nth-child(1),
+#second:checked ~ .slider-container .control-panel label:nth-child(2),
+#third:checked ~ .slider-container .control-panel label:nth-child(3) {
+  background: var(--slider-checked-slide-control-color);
+}
+
+#first:checked ~ .slider-container div:nth-child(1),
+#second:checked ~ .slider-container div:nth-child(2),
+#third:checked ~ .slider-container div:nth-child(3) {
+  visibility: visible;
+}
+
+.slider-container div:nth-child(1),
+.slider-container div:nth-child(2),
+.slider-container div:nth-child(3) {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#first:checked ~ .slider-container .left-button-control label:nth-child(3),
+#first:checked ~ .slider-container .right-button-control label:nth-child(2),
+#second:checked ~ .slider-container .left-button-control label:nth-child(1),
+#second:checked ~ .slider-container .right-button-control label:nth-child(3),
+#third:checked ~ .slider-container .left-button-control label:nth-child(2),
+#third:checked ~ .slider-container .right-button-control label:nth-child(1) {
+  display: block;
+}
+
+#first:checked ~ .slider-container {
+  div:nth-child(1) {
+    left: 0;
+    transition: 0.3s linear;
+  }
+
+  div:nth-child(2) {
+    left: 56vw;
+    transition: 0.3s linear;
+    visibility: hidden;
+  }
+
+  div:nth-child(3) {
+    left: -56vw;
+    transition: 0.3s linear;
+    visibility: hidden;
+  }
+}
+
+#second:checked ~ .slider-container {
+  div:nth-child(2) {
+    left: 0;
+    transition: 0.3s linear;
+  }
+
+  div:nth-child(3) {
+    left: 56vw;
+    transition: 0.3s linear;
+    visibility: hidden;
+  }
+
+  div:nth-child(1) {
+    left: -56vw;
+    transition: 0.3s linear;
+    visibility: hidden;
+  }
+}
+
+#third:checked ~ .slider-container {
+  div:nth-child(3) {
+    left: 0;
+    transition: 0.3s linear;
+  }
+
+  div:nth-child(1) {
+    left: 56vw;
+    transition: 0.3s linear;
+    visibility: hidden;
+  }
+
+  div:nth-child(2) {
+    left: -56vw;
+    transition: 0.3s linear;
+    visibility: hidden;
+  }
+}
