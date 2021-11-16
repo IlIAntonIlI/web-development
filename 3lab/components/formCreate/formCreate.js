@@ -137,14 +137,9 @@ export default function Form({ visibility, closeFunction, refreshData }) {
             required
           />
         </div>
-        <div className={stylesForm[formControl]}>
+        <div className={stylesForm["form-control-text"]}>
           <label>Text:</label>
-          <textarea
-            form="createPostForm"
-            id="text"
-            className={stylesForm["text-input"]}
-            required
-          />
+          <textarea form="createPostForm" id="text" required />
         </div>
         <div className={stylesForm["form-control-button"]}>
           <div className={stylesForm["button-container"]}>

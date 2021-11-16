@@ -3,8 +3,9 @@
   background: var(--color-background-color-form);
   border: solid 1px var(--color-green);
   border-radius: 5px;
+  height: 60%;
   left: 27.5%;
-  min-height: 60vh;
+  padding: 1%;
   position: fixed;
   top: 10vh;
   transition: 0.5s linear;
@@ -19,10 +20,10 @@
   }
 
   form {
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    margin: 5%;
-    margin-bottom: 3%;
-    margin-top: 3%;
+    justify-content: space-evenly;
     width: 100%;
   }
 }
@@ -37,7 +38,6 @@
     background-color: var(--color-close-button-orange);
     border-radius: 5px;
     height: 26.5px;
-    margin: 1%;
     position: relative;
     width: 26.5px;
 
@@ -60,9 +60,9 @@
 }
 
 .form-control {
-  margin-top: 2%;
+  margin: 0 auto;
+  min-height: 15%;
   width: 90%;
-
   @media (min-width: 601px) {
     font-size: calc(1.3 * var(--font-size-standart));
   }
@@ -74,6 +74,9 @@
   label {
     color: var(--color-text-form-orange);
     display: block;
+    @media (max-height: 600px) {
+      font-size: calc(4 * var(--font-size-short-phone));
+    }
   }
 
   input {
@@ -90,7 +93,7 @@
 
     color: var(--color-text-form-light-orange);
 
-    height: 5vh;
+    height: 60%;
     padding: 0;
     text-indent: 5%;
 
@@ -103,11 +106,47 @@
     }
 
     @media (max-height: 280px) {
-      font-size: calc(1.5 * var(--font-size-short-phone));
+      font-size: calc(3 * var(--font-size-short-phone));
     }
 
     &:focus {
       outline: none;
+    }
+  }
+
+}
+
+.hidden {
+  animation: hidding 0.5s linear;
+  transition: 0.5s linear;
+
+  visibility: hidden;
+
+  .button-container {
+    button {
+      visibility: hidden;
+    }
+  }
+}
+
+.form-control-text {
+  height: 40%;
+  margin: 0 auto;
+  position: relative;
+  width: 90%;
+  @media (min-width: 601px) {
+    font-size: calc(1.3 * var(--font-size-standart));
+  }
+
+  @media (max-width: 600px) {
+    font-size: calc(1.5 * var(--font-size-narrow-phone));
+  }
+
+  label {
+    color: var(--color-text-form-orange);
+    display: block;
+    @media (max-height: 600px) {
+      font-size: calc(4 * var(--font-size-short-phone));
     }
   }
 
@@ -116,9 +155,12 @@
     border-radius: 5px;
 
     color: var(--color-text-form-light-orange);
-    padding: 5%;
+    height: 60%;
+    padding: 3%;
+    padding-bottom: 1%;
+    padding-top: 1%;
     resize: none;
-    width: 90%;
+    width: 94%;
 
     @media (min-width: 601px) {
       font-size: calc(1.3 * var(--font-size-standart));
@@ -136,32 +178,18 @@
       outline: none;
     }
   }
-
-  .text-input {
-    height: 20vh;
-  }
-}
-
-.hidden {
-  animation: hidding 0.5s linear;
-  transition: 0.5s linear;
-
-  visibility: hidden;
-
-  .button-container {
-    button {
-      visibility: hidden;
-    }
-  }
 }
 
 .form-control-button {
   display: flex;
-  margin-top: 10%;
+  height: 9%;
   width: 100%;
 
   div {
-    height: 5vh;
+    align-items: flex-end;
+    display: flex;
+    height: 100%;
+    justify-content: center;
   }
 
   .button-container {
@@ -177,7 +205,7 @@
       }
 
       @media (max-height: 500px) {
-        font-size: var(--font-size-short-phone);
+        font-size: calc(2*var(--font-size-short-phone));
       }
 
       border: solid 1px var(--color-green);
