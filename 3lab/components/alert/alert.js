@@ -31,7 +31,9 @@ export default function Alert({ visibility, text, color, close }) {
       </Head>
       <div className={stylesAlert.text}>{text}</div>
       <div className={stylesAlert["close-button"]}>
-        <div onClick={close}></div>
+        <div onClick={close}>
+          <i className="fas fa-times"></i>
+        </div>
       </div>
     </div>
   );

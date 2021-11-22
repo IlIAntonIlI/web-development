@@ -4,14 +4,14 @@
   border: solid 1px var(--color-green);
   border-radius: 5px;
   height: 60%;
-  left: 27.5%;
+  left: 30%;
   padding: 1%;
   position: fixed;
   top: 10vh;
   transition: 0.5s linear;
-
   visibility: visible;
   width: 40%;
+  z-index: 3;
 
   .button-container {
     button {

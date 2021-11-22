@@ -5,7 +5,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-export default function Form({ visibility, closeFunction, refreshData }) {
+export default function Form({ visibility, closeFunction }) {
   const [visibilityOfSpiner, setVisibilityOfSpiner] = useState(false);
   const [disabledButton, setDisabledButton] = useState(false);
   const [visibilityOfAlert, setVisibilityAlert] = useState(false);
@@ -16,8 +16,6 @@ export default function Form({ visibility, closeFunction, refreshData }) {
     if (visibilityOfAlert) {
       setVisibilityAlert(false);
       setDisabledButton(false);
-      setVisibilityOfSpiner(false);
-      // if (router.pathname === "/") refreshData();
     }
   };
   function handleSubmit(e) {
@@ -36,22 +34,21 @@ export default function Form({ visibility, closeFunction, refreshData }) {
       })
       .then((data) => {
         if (data.meta.data.created) {
-          let author = e.target.elements.author.value;
-          let theme = e.target.elements.theme.value;
-          let text = e.target.elements.text.value;
+          let author, theme, text;
+          [author, theme, text] = Array.prototype.map.call(
+            e.target.elements,
+            (element) => element.value
+          );
           //sanitizing values...
           async function fetchGraphQL(operationsDoc, operationName, variables) {
-            const result = await fetch(
-              "https://web-kpi-lab3.herokuapp.com/v1/graphql",
-              {
-                method: "POST",
-                body: JSON.stringify({
-                  query: operationsDoc,
-                  variables: variables,
-                  operationName: operationName,
-                }),
-              }
-            );
+            const result = await fetch(process.env.DATABASE_LINK, {
+              method: "POST",
+              body: JSON.stringify({
+                query: operationsDoc,
+                variables: variables,
+                operationName: operationName,
+              }),
+            });
 
             return await result.json();
           }
@@ -77,24 +74,28 @@ export default function Form({ visibility, closeFunction, refreshData }) {
             const { errors, data } = await executeMyMutation();
             if (errors) {
               setTextAlert("Error while creating post");
-              setVisibilityAlert(true);
               setColorAlert(data.meta.data.color);
+              setVisibilityAlert(true);
+              setVisibilityOfSpiner(false);
               return;
             }
             setTextAlert("Succesfuly created");
-            setVisibilityAlert(true);
             setColorAlert(color);
+            setVisibilityAlert(true);
+            setVisibilityOfSpiner(false);
           }
           startExecuteMyMutation();
           return;
         }
         setTextAlert(data.meta.data.messuage);
-        setVisibilityAlert(true);
         setColorAlert(data.meta.data.color);
+        setVisibilityAlert(true);
+        setVisibilityOfSpiner(false);
       })
       .catch((e) => {
         setTextAlert("Error while creating post");
         setColorAlert("red");
+        setVisibilityOfSpiner(false);
       });
   }
   const formConatiner = "form-container";

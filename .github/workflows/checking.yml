@@ -10,3 +10,5 @@ jobs:
       - name: "Checking 3lab project" 
         working-directory: 3lab
         run: npm ci && npm run format && npm run lint && npm run lint:style
+        env:
+          DATABASE_LINK: ${{secrets.DATABASE_LINK}}

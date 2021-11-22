@@ -8,7 +8,6 @@ import Loader from "/components/loader/loader";
 import { useState } from "react";
 import React from "react";
 import { useSubscription } from "urql";
-import { useQuery } from "urql";
 
 const MyPosts = `
 query {
