@@ -9,16 +9,6 @@ import { useState } from "react";
 import React from "react";
 import { useSubscription } from "urql";
 
-const MyPosts = `
-query {
-  posts(order_by: {date: desc}) {
-    author
-    id
-    postText
-    date
-    Theme
-  }
-}`;
 const newPosts = `
 subscription {
   posts(order_by: {date: desc}) {

@@ -1,9 +1,7 @@
 import stylesForm from "./formCreate.module.scss";
 import Spiner from "../spiner/spiner";
 import Alert from "../alert/alert";
-import Head from "next/head";
 import { useState } from "react";
-import { useRouter } from "next/router";
 
 export default function Form({ visibility, closeFunction }) {
   const [visibilityOfSpiner, setVisibilityOfSpiner] = useState(false);
@@ -11,7 +9,6 @@ export default function Form({ visibility, closeFunction }) {
   const [visibilityOfAlert, setVisibilityAlert] = useState(false);
   const [textOfAlert, setTextAlert] = useState("");
   const [colorOfAlert, setColorAlert] = useState("");
-  const router = useRouter();
   const closingFunction = function () {
     if (visibilityOfAlert) {
       setVisibilityAlert(false);
