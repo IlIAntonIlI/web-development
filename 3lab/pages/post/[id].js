@@ -13,17 +13,14 @@ export default function Post({ route }) {
   const [colorOfAlert, setColorAlert] = useState("");
 
   async function fetchGraphQL(operationsDoc, operationName, variables) {
-    const result = await fetch(
-      "https://web-kpi-lab3.herokuapp.com/v1/graphql",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          query: operationsDoc,
-          variables: variables,
-          operationName: operationName,
-        }),
-      }
-    );
+    const result = await fetch(process.env.DATABASE_LINK, {
+      method: "POST",
+      body: JSON.stringify({
+        query: operationsDoc,
+        variables: variables,
+        operationName: operationName,
+      }),
+    });
 
     return await result.json();
   }
@@ -70,30 +67,32 @@ export default function Post({ route }) {
       </Head>
       <Header />
 
-      <main className={styles["post-content"]}>
-        {posts.length == 0 ? (
+      {posts.length == 0 ? (
+        <>
+          <main className={styles["post-content"]}></main>
           <Loader />
-        ) : (
-          <>
-            <Alert
-              visibility={visibilityOfAlert}
-              text={textOfAlert}
-              color={colorOfAlert}
-              close={closingFunction}
-            />
-            <h1>{posts[0].Theme}</h1>
-            <br />
-            <h2>Author: {posts[0].author}</h2>
-            <br />
-            <h2>
-              Date of creation:{" "}
-              {posts[0].date.slice(0, 10) + " | " + posts[0].date.slice(11, 19)}
-            </h2>
-            <br />
-            <span>{posts[0].postText}</span>
-          </>
-        )}
-      </main>
+        </>
+      ) : (
+        <main className={styles["post-content"]}>
+          <Alert
+            visibility={visibilityOfAlert}
+            text={textOfAlert}
+            color={colorOfAlert}
+            close={closingFunction}
+          />
+          <h1>{posts[0].Theme}</h1>
+          <br />
+          <h2>Author: {posts[0].author}</h2>
+          <br />
+          <h2>
+            Date of creation:{" "}
+            {posts[0].date.slice(0, 10) + " | " + posts[0].date.slice(11, 19)}
+          </h2>
+          <br />
+          <span>{posts[0].postText}</span>
+        </main>
+      )}
+
       <Footer />
     </>
   );

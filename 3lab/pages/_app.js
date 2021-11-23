@@ -5,13 +5,13 @@ import { SubscriptionClient } from "subscriptions-transport-ws";
 var WebSocketClient = require("websocket").client;
 
 const subscriptionClient = new SubscriptionClient(
-  "wss://web-kpi-lab3.herokuapp.com/v1/graphql",
+  process.env.SECURE_DATABASE_LINK,
   { reconnect: true },
   WebSocketClient
 );
 
 const client = new Client({
-  url: "https://web-kpi-lab3.herokuapp.com/v1/graphql",
+  url: process.env.DATABASE_LINK,
   exchanges: [
     ...defaultExchanges,
     subscriptionExchange({
