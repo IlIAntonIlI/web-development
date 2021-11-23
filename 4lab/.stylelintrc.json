@@ -3,6 +3,10 @@
   "rules": {
     "max-nesting-depth": [8],
     "selector-max-id": [5],
-    "selector-max-compound-selectors": [10]
+    "selector-max-compound-selectors": [10],
+    "block-opening-brace-space-before": [
+      "always",
+      { "ignoreAtRules": ["/eac/"], "ignoreSelectors": ["/$/"] }
+    ]
   }
 }
