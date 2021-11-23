@@ -77,14 +77,14 @@
   visibility: visible;
 }
 
-.slider-container div:nth-child(1),
-.slider-container div:nth-child(2),
-.slider-container div:nth-child(3) {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
+@for $i from 1 to 4 {
+  .slider-container div:nth-child(#{$i}) {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 }
 
 @keyframes changing {
@@ -94,70 +94,50 @@
   
 }
 
-#first:checked ~ .slider-container .left-button-control label:nth-child(3),
-#first:checked ~ .slider-container .right-button-control label:nth-child(2),
-#second:checked ~ .slider-container .left-button-control label:nth-child(1),
-#second:checked ~ .slider-container .right-button-control label:nth-child(3),
-#third:checked ~ .slider-container .left-button-control label:nth-child(2),
-#third:checked ~ .slider-container .right-button-control label:nth-child(1) {
-  animation: changing 0.2s linear;
-  
-  display: block;
+$slides: (
+  '#first':(('left':3),('right':2)),
+  '#second':(('left':1),('right':3)),
+  '#third':(('left':2),('right':1)),
+);
+
+@each $slide, $value in $slides {
+  @each $subvalue in $value {
+    @each $control,$child in $subvalue {
+      #{$slide}:checked ~ .slider-container .#{$control}-button-control label:nth-child(#{$child}) {
+        animation: changing 0.2s linear;
+        display: block;
+      }
+    }
+  } 
 }
 
-#first:checked ~ .slider-container {
-  div:nth-child(1) {
-    left: 0;
-    transition: 0.2s linear;
-  }
 
-  div:nth-child(2) {
-    left: 55vw;
-    transition: 0.2s linear;
-    visibility: hidden;
-  }
 
-  div:nth-child(3) {
-    left: -55vw;
-    transition: 0.2s linear;
-    visibility: hidden;
-  }
-}
+$slides1: (
+  '#first':(1,2,3),
+  '#second':(2,3,1),
+  '#third':(3,1,2)
+);
 
-#second:checked ~ .slider-container {
-  div:nth-child(2) {
-    left: 0;
-    transition: 0.2s linear;
-  }
 
-  div:nth-child(3) {
-    left: 55vw;
-    transition: 0.2s linear;
-    visibility: hidden;
-  }
-
-  div:nth-child(1) {
-    left: -55vw;
-    transition: 0.2s linear;
-    visibility: hidden;
-  }
-}
-
-#third:checked ~ .slider-container {
-  div:nth-child(3) {
-    left: 0;
-    transition: 0.2s linear;
-  }
-
-  div:nth-child(1) {
-    left: 55vw;
-    transition: 0.2s linear;
-    visibility: hidden;
-  }
-
-  div:nth-child(2) {
-    left: -55vw;
-    transition: 0.2s linear;
-    visibility: hidden;
+@each $slide, $childs in $slides1 {
+  #{$slide}:checked ~ .slider-container {
+    $child: nth($childs, 1);
+    $child: nth($childs, 2);
+    $child: nth($childs, 3);
+    div:nth-child(#{$child}) {
+      left: 0;
+      transition: 0.2s linear;
+    }
+    div:nth-child(#{$child}) {
+      left: 55vw;
+      transition: 0.2s linear;
+      visibility: hidden;
+    }
+    div:nth-child(#{$child}) {
+      left: -55vw;
+      transition: 0.2s linear;
+      visibility: hidden;
+    }
   }
 }
