@@ -1,6 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run lint --workspace=4lab
-npm run lint:style --workspace=4lab
-npm run format --workspace=4lab
+npm run lint --workspaces --if-present
+npm run lint:style --workspaces --if-present
+npm run format --workspaces --if-present
