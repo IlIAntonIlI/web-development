@@ -10,8 +10,8 @@
     "lint:style:fix": "stylelint \"**/*.scss\" --fix --ignore-path .gitignore",
     "lint": "eslint . --no-error-on-unmatched-pattern --ignore-path .gitignore ",
     "lint:fix": "eslint . --fix --ignore-path .gitignore",
-    "format": "prettier . --check --ignore-path .gitignore",
-    "format:fix": "prettier . --write --ignore-path .gitignore"
+    "format": "prettier . --check --ignore-path .prettierignore",
+    "format:fix": "prettier . --write --ignore-path .prettierignore"
   },
   "dependencies": {
     "lambda-rate-limiter": "^3.0.1",

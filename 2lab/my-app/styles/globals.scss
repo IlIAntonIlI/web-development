@@ -37,48 +37,38 @@ p {
   margin: 0;
 }
 
-@media (max-height: 999px) {
-  form {
-    height: 100%;
-    color: var(--color-white);
+form {
+  height: 100%;
+  color: var(--color-white);
+
+  @media (max-height: 999px) {
     font-size: var(--font-size-short-phone);
   }
 
-  h1 {
-    width: 100%;
-    font-size: 2em;
-    color: var(--font-color-grey);
-    text-align: center;
-  }
-}
-
-@media (max-width: 799px) {
-  form {
-    height: 100%;
-    color: var(--color-white);
+  @media (max-width: 799px) {
     font-size: var(--font-size-narrow-phone);
   }
 
-  h1 {
-    width: 100%;
-    font-size: calc(var(--font-size-narrow-phone) * 2);
-    color: var(--font-color-grey);
-    text-align: center;
+  @media (max-width: 200px), (max-height: 400px) {
+    font-size:
+      calc(
+        var(--font-size-short-phone) * 0.4 + var(--font-size-narrow-phone) * 0.4
+      );
+  }
+
+  @media (min-height: 1000px) and (min-width: 800px) {
+    font-size: var(--font-size-desktop);
   }
 }
 
-@media (min-height: 1000px) and (min-width: 800px) {
-  form {
-    height: 100%;
-    color: var(--color-white);
-    font-size: var(--font-size-desktop);
-  }
+h1 {
+  width: 100%;
+  color: var(--font-color-grey);
+  text-align: center;
+  font-size: 2em;
 
-  h1 {
-    width: 100%;
-    font-size: 2em;
-    color: var(--font-color-grey);
-    text-align: center;
+  @media (max-width: 799px) {
+    font-size: calc(var(--font-size-narrow-phone) * 2);
   }
 }
 
@@ -90,13 +80,13 @@ input {
   letter-spacing: 1px;
   border: solid 1.5px var(--color-black);
   border-radius: 5px;
-  margin-top: 5px;
+  margin-top: 1%;
   transition: 1.5s linear;
 }
 
 input:focus {
   outline: none;
-  border: solid 2.5px var(--border-color-light-green);
+  border: solid 1.5px var(--border-color-light-green);
   transition: 0.5s linear;
 }
 
@@ -110,14 +100,14 @@ textarea {
   border: solid 1.5px var(--color-black);
   border-radius: 5px;
   padding: 2% 2% 5% 5%;
+  margin-top: 1%;
   resize: none;
-  margin-top: 5px;
   transition: 0.5s linear;
 }
 
 textarea:focus {
   outline: none;
-  border: solid 2.5px var(--border-color-light-green);
+  border: solid 1.5px var(--border-color-light-green);
   transition: 0.5s linear;
 }
 

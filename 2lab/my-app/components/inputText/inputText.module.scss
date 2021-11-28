@@ -12,12 +12,12 @@
 }
 
 .red-border {
-  border: solid 2.5px var(--border-color-light-red);
+  border: solid 1.5px var(--border-color-light-red);
   transition: 0.5s linear;
 }
 
 .red-border:focus {
   outline: none;
-  border: solid 2.5px var(--border-color-light-red);
+  border: solid 1.5px var(--border-color-light-red);
   transition: 0.5s linear;
 }

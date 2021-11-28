@@ -4,8 +4,8 @@
 }
 
 .container {
-  height: 80vh;
-  width: 32vw;
+  min-height: 80vh;
+  min-width: 32vw;
 }
 
 @media (min-height: 1000px) {
@@ -33,7 +33,7 @@
 @media (max-height: 999px) {
   .form-container {
     position: relative;
-    height: 70vh;
+    min-height: 70vh;
     width: 100%;
     background: var(--form-background-color-grey);
     border-radius: 5px;
