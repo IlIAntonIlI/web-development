@@ -11,6 +11,10 @@
   padding: 0;
 }
 
+body{
+  height: 100vh;
+}
+
 header {
   background: var(--background-color-header);
   display: flex;
