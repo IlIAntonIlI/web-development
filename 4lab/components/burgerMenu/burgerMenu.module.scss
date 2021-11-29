@@ -18,7 +18,7 @@
     width: 0;
     z-index: 3;
     @media (max-height:300px),(max-width:300px) {
-      height: calc(100% - 20px);
+      height: 100%;
       padding: 30px 10px 0;
     }
 
