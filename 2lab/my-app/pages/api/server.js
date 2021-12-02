@@ -26,6 +26,7 @@ export default async function handler(req, res) {
       source: {
         pointer: error.pointer,
         parametr: error.parametr,
+        error: error,
       },
       meta: {
         data: {
@@ -46,21 +47,6 @@ export default async function handler(req, res) {
       pass: process.env.MAIL_PASSWORD,
     },
   });
-
-  if (Object.values(req.body).find((element) => element === null)) {
-    return res.json({
-      id: new Date() + " empty fields" + req.headers[header],
-      status: "400",
-      title: "Fields must be not empty",
-      detail: "User dont fill all fields",
-      meta: {
-        data: {
-          messuage: "All fields must not be empty!",
-          color: "red",
-        },
-      },
-    });
-  }
 
   if (!validateEmail(req.body.where.trim())) {
     return res.json({
@@ -103,6 +89,7 @@ export default async function handler(req, res) {
       title: "Connect to mailer failed",
       detail: "User's internet unstable or server of mailer not available now",
       source: {
+        error: error,
         pointer: error.pointer,
         parametr: error.parametr,
       },
