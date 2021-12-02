@@ -19,12 +19,7 @@ export default function Header({ refreshData }) {
       <figure className={stylesHeader["logotype-container"]}>
         <Link href="/">
           <a>
-            <Image
-              src="/images/stories.png"
-              alt="logotype"
-              width="100px"
-              height="100px"
-            />
+            <Image src="/images/stories.png" alt="logotype" layout="fill" />
           </a>
         </Link>
         <Link href="/">

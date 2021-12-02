@@ -7,147 +7,73 @@
   width: 100%;
 }
 
-@media (max-width: 300px) {
-  .logotype-container {
-    padding-left: 2%;
-    padding-right: 3%;
-    width: 70%;
-  }
-
-  .container-creation-button {
-    align-items: center;
-    color: var(--color-purple-grey);
-    display: flex;
-    font-size: calc(1.5 * var(--font-size-narrow-phone));
-    justify-content: flex-end;
-    width: 30%;
-
-    div {
-      align-items: center;
-      display: flex;
-      margin-right: 3%;
-      transition: 0.5s linear;
-      width: 50%;
-
-      i {
-        font-size: calc(1.5 * var(--font-size-narrow-phone));
-        margin-right: 2%;
-      }
-
-      &:hover {
-        color: var(--color-green);
-        cursor: pointer;
-        transform: translate(3px, -3px);
-        transition: 0.5s linear;
-  
-        i {
-          text-shadow: -3px 3px 1px var(--color-medium-transparent-grey);
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 301px) and (max-width: 600px) {
-  .logotype-container {
-    align-items: center;
-    display: flex;
-    padding-left: 2%;
-    padding-right: 3%;
-    width: 70%;
-
-    figcaption {
-      width: 50%;
-    }
-  }
-
-  .container-creation-button {
-    align-items: center;
-    color: var(--color-purple-grey);
-    display: flex;
-    font-size: var(--font-size-narrow-phone);
-    justify-content: flex-end;
-    width: 30%;
-
-    div {
-      align-items: center;
-      display: flex;
-      margin-right: 3%;
-      transition: 0.5s linear;
-      width: 50%;
-
-      i {
-        font-size: calc(2.5 * var(--font-size-narrow-phone));
-        margin-right: 2%;
-      }
-
-      &:hover {
-        color: var(--color-green);
-        cursor: pointer;
-        transform: translate(3px, -3px);
-        transition: 0.5s linear;
-  
-        i {
-          text-shadow: -3px 3px 1px var(--color-medium-transparent-grey);
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 601px) {
-  .logotype-container {
-    align-items: center;
-    display: flex;
-    padding-left: 2%;
-    padding-right: 3%;
-    width: 50%;
-  }
-
-  .container-creation-button {
-    align-items: center;
-    color: var(--color-purple-grey);
-    display: flex;
-    font-size: calc(1.5 * var(--font-size-standart));
-    justify-content: flex-end;
-    width: 50%;
-
-    div {
-      align-items: center;
-      display: flex;
-      margin-right: 3%;
-      transition: 0.5s linear;
-      width: 50%;
-
-      i {
-        font-size: calc(2.5 * var(--font-size-standart));
-        margin-right: 2%;
-      }
-
-      &:hover {
-        color: var(--color-green);
-        cursor: pointer;
-        transform: translate(3px, -3px);
-        transition: 0.5s linear;
-  
-        i {
-          text-shadow: -3px 3px 1px var(--color-medium-transparent-grey);
-        }
-      }
-    }
-
-  }
-}
-
 .logotype-container {
-  figcaption {
-    color: var(--color-purple-grey);
-    font-size: 40px;
-    letter-spacing: 4px;
-    word-wrap: break-word;
+  display: flex;
+  width: 60%;
+  @media (max-height:150px),(max-width:160px) {
+    flex-direction: column;
+    justify-content: center;
+
+    a {
+      justify-content: center;
+    }
   }
 
   a {
+    align-items: center;
+    display: flex;
     text-decoration: none;
+
+    figcaption {
+      color: var(--color-purple-grey);
+      font-size: calc(0.65 * var(--font-size-narrow-phone) + 0.5 * var(--font-size-standart));
+      letter-spacing: 4px;
+      word-wrap: break-word;
+     
+    }
+
+    &:nth-child(1) {
+      align-self: center;
+      height: 10vh;
+      max-height: 100px;
+      max-width: 100px;
+      min-height: 40px;
+      min-width: 40px;
+      position: relative;
+      width: 10vh;
+    }
+  }
+}
+
+.container-creation-button {
+  align-items: center;
+  color: var(--color-purple-grey);
+  display: flex;
+  font-size: calc(0.5 * var(--font-size-narrow-phone) + 0.4 * var(--font-size-standart));
+  justify-content: flex-end;
+  width: 40%;
+
+  div {
+    align-items: center;
+    display: flex;
+    margin-right: 3%;
+    transition: 0.5s linear;
+    width: 50%;
+
+    i {
+      font-size: calc(1.5 * var(--font-size-narrow-phone));
+      margin-right: 2%;
+    }
+
+    &:hover {
+      color: var(--color-green);
+      cursor: pointer;
+      transform: translate(3px, -3px);
+      transition: 0.5s linear;
+
+      i {
+        text-shadow: -3px 3px 1px var(--color-medium-transparent-grey);
+      }
+    }
   }
 }
