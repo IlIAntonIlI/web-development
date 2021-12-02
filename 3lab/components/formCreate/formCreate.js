@@ -6,12 +6,11 @@ import { useState } from "react";
 export default function Form({ visibility, closeFunction }) {
   const [visibilityOfSpiner, setVisibilityOfSpiner] = useState(false);
   const [disabledButton, setDisabledButton] = useState(false);
-  const [visibilityOfAlert, setVisibilityAlert] = useState(false);
   const [textOfAlert, setTextAlert] = useState("");
   const [colorOfAlert, setColorAlert] = useState("");
   const closingFunction = function () {
-    if (visibilityOfAlert) {
-      setVisibilityAlert(false);
+    if (textOfAlert) {
+      setTextAlert("");
       setDisabledButton(false);
     }
   };
@@ -29,13 +28,14 @@ export default function Form({ visibility, closeFunction }) {
       .then((resp) => {
         return resp.json();
       })
-      .then((data) => {
-        if (data.meta.data.created) {
-          let author, theme, text;
-          [author, theme, text] = Array.prototype.map.call(
-            e.target.elements,
-            (element) => element.value
-          );
+      .then((data, error) => {
+        if (error) {
+          setTextAlert("Error while submiting");
+          setColorAlert("red");
+          setVisibilityOfSpiner(false);
+          return;
+        }
+        if (data?.meta?.data?.created) {
           //sanitizing values...
           async function fetchGraphQL(operationsDoc, operationName, variables) {
             const result = await fetch(process.env.DATABASE_LINK, {
@@ -45,8 +45,10 @@ export default function Form({ visibility, closeFunction }) {
                 variables: variables,
                 operationName: operationName,
               }),
+              headers: {
+                "Content-Type": "application/json",
+              },
             });
-
             return await result.json();
           }
 
@@ -56,7 +58,7 @@ export default function Form({ visibility, closeFunction }) {
                     }
                     
                     mutation MyMutation {
-                    insert_posts_one(object: {Theme: "${theme}", author: "${author}", postText: "${text}"}) {
+                    insert_posts_one(object: {Theme: "${e.target.elements.theme.value}", author: "${e.target.elements.author.value}", postText: "${e.target.elements.text.value}"}) {
                         id
                     }
                     }
@@ -68,17 +70,16 @@ export default function Form({ visibility, closeFunction }) {
 
           let color = data.meta.data.color;
           async function startExecuteMyMutation() {
-            const { errors, data } = await executeMyMutation();
-            if (errors) {
-              setTextAlert("Error while creating post");
-              setColorAlert(data.meta.data.color);
-              setVisibilityAlert(true);
+            try {
+              await executeMyMutation();
+            } catch {
+              setTextAlert("Error while sending request!");
+              setColorAlert("red");
               setVisibilityOfSpiner(false);
               return;
             }
             setTextAlert("Succesfuly created");
             setColorAlert(color);
-            setVisibilityAlert(true);
             setVisibilityOfSpiner(false);
           }
           startExecuteMyMutation();
@@ -86,7 +87,6 @@ export default function Form({ visibility, closeFunction }) {
         }
         setTextAlert(data.meta.data.messuage);
         setColorAlert(data.meta.data.color);
-        setVisibilityAlert(true);
         setVisibilityOfSpiner(false);
       })
       .catch((e) => {
@@ -100,17 +100,10 @@ export default function Form({ visibility, closeFunction }) {
   return (
     <div
       className={
-        visibility
-          ? stylesForm[formConatiner]
-          : stylesForm[formConatiner] + " " + stylesForm.hidden
+        stylesForm[formConatiner] + " " + (!visibility && stylesForm.hidden)
       }
     >
-      <Alert
-        visibility={visibilityOfAlert}
-        text={textOfAlert}
-        color={colorOfAlert}
-        close={closingFunction}
-      />
+      <Alert text={textOfAlert} color={colorOfAlert} close={closingFunction} />
       <div className={stylesForm["close-button-conatiner"]}>
         <div onClick={closeFunction}></div>
       </div>

@@ -7,7 +7,7 @@
   left: 30%;
   padding: 1%;
   position: fixed;
-  top: 10vh;
+  top: 10%;
   transition: 0.5s linear;
   visibility: visible;
   width: 40%;
@@ -35,22 +35,38 @@
   width: 100%;
 
   div {
-    background-color: var(--color-close-button-orange);
     border-radius: 5px;
     height: 26.5px;
     position: relative;
     width: 26.5px;
+    @media (max-height:500px),(max-width:700px) {
+      height: 20px;
+      width: 20px;
+    }
+    @media (max-height:300px),(max-width:300px) {
+      height: 15px;
+      width: 15px;
+    }
 
     &::after {
       bottom: 0;
-      color: var(--color-white);
+      color: var(--color-close-button-orange);
       content: '\274c';
       font-size: 20px;
+      
       left: 0;
       position: absolute;
       right: 0;
       text-align: center;
       top: -1px;
+      @media (max-height:500px),(max-width:700px) {
+        font-size: 15px;
+        right: 5%;
+        top: 2%;
+      }
+      @media (max-height:300px),(max-width:300px) {
+        font-size: 12px;
+      }
     }
 
     &:hover {

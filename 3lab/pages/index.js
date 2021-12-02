@@ -56,7 +56,7 @@ export default function Home() {
           <main className={styles.postslist}></main>
           <Loader />
         </>
-      ) : data.posts.length !== 0 ? (
+      ) : (
         <main className={styles.postslist}>
           {data.posts.map((post) => (
             <div key={post.id}>
@@ -70,8 +70,6 @@ export default function Home() {
             </div>
           ))}
         </main>
-      ) : (
-        <main className={styles.postslist}></main>
       )}
 
       <Footer />

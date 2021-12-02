@@ -5,8 +5,8 @@
   min-height: 20vh;
   position: absolute;
   right: 5%;
-  top: -7vh;
-  transition: 0.5s ease;
+  top: -15%;
+  transition: 0.3s ease;
   width: 90%;
   z-index: 10;
 }
@@ -87,6 +87,6 @@
 }
 
 .move {
-  top: -2vh;
+  top: -2%;
   transition: 0.5s ease;
 }
