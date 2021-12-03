@@ -8,7 +8,6 @@ import { useState } from "react";
 
 export default function Post({ route }) {
   const [posts, setPosts] = useState([]);
-  const [visibilityOfAlert, setVisibilityAlert] = useState(false);
   const [textOfAlert, setTextAlert] = useState("");
   const [colorOfAlert, setColorAlert] = useState("");
 
@@ -44,7 +43,6 @@ export default function Post({ route }) {
     const { errors, data } = await fetchMyQuery();
 
     if (errors) {
-      setVisibilityAlert(true);
       setTextAlert("Error while fetching data");
       setColorAlert("red");
     }
@@ -56,8 +54,8 @@ export default function Post({ route }) {
   startFetchMyQuery();
 
   const closingFunction = function () {
-    if (visibilityOfAlert) {
-      setVisibilityAlert(false);
+    if (textOfAlert) {
+      setTextAlert("");
     }
   };
   return (
@@ -75,7 +73,6 @@ export default function Post({ route }) {
       ) : (
         <main className={styles["post-content"]}>
           <Alert
-            visibility={visibilityOfAlert}
             text={textOfAlert}
             color={colorOfAlert}
             close={closingFunction}

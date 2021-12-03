@@ -20,13 +20,12 @@ subscription {
   }
 }`;
 export default function Home() {
-  const [visibilityOfAlert, setVisibilityAlert] = useState(false);
   const [textOfAlert, setTextAlert] = useState("");
   const [colorOfAlert, setColorAlert] = useState("");
 
   const closingFunction = function () {
-    if (visibilityOfAlert) {
-      setVisibilityAlert(false);
+    if (textOfAlert) {
+      setTextAlert("");
     }
   };
   const [result] = useSubscription({
@@ -35,7 +34,6 @@ export default function Home() {
 
   const { data, fetching, error } = result;
   if (error) {
-    setVisibilityAlert(true);
     setTextAlert("Error while fetching data");
     setColorAlert("red");
   }
@@ -45,12 +43,7 @@ export default function Home() {
         <title>Stories</title>
       </Head>
       <Header />
-      <Alert
-        visibility={visibilityOfAlert}
-        text={textOfAlert}
-        color={colorOfAlert}
-        close={closingFunction}
-      />
+      <Alert text={textOfAlert} color={colorOfAlert} close={closingFunction} />
       {fetching || error ? (
         <>
           <main className={styles.postslist}></main>
