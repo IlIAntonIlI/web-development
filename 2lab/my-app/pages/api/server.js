@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   try {
     await rateLimit(3, clientIP);
   } catch (error) {
-    return res.json({
+    return res.status(429).json({
       id: new Date() + " rate limit" + req.headers[header],
       links: {
         about: error.about,
@@ -49,7 +49,7 @@ export default async function handler(req, res) {
   });
 
   if (!validateEmail(req.body.where.trim())) {
-    return res.json({
+    return res.status(400).json({
       id: new Date() + " uncorrect email" + req.headers[header],
       status: "400",
       title: "Uncorrect email",
@@ -76,7 +76,7 @@ export default async function handler(req, res) {
   try {
     let info = await transporter.sendMail(bodyToSend);
   } catch (error) {
-    return res.json({
+    return res.status(500).json({
       id:
         new Date() +
         " failed connection to mailer" +
