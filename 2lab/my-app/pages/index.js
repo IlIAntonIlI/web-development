@@ -15,7 +15,6 @@ export function validateEmail(email) {
 export default function Home() {
   const [visibilityOfSpiner, setVisibility] = useState(false);
   const [disabledButton, setDisabledButoon] = useState("");
-  const [visibilityOfAlert, setVisibilityAlert] = useState(false);
   const [textOfAlert, setTextAlert] = useState("");
   const [colorOfAlert, setColorAlert] = useState("");
 
@@ -34,7 +33,6 @@ export default function Home() {
         where: secondEmail,
         letter: messuage,
       };
-
       fetch("/api/server", {
         method: "POST",
         headers: {
@@ -47,7 +45,6 @@ export default function Home() {
         })
         .then((data) => {
           setVisibility(false);
-          setVisibilityAlert(true);
           setTextAlert(data.meta.data.messuage);
           setColorAlert(data.meta.data.color);
         })
@@ -57,17 +54,14 @@ export default function Home() {
         });
     } else {
       setVisibility(false);
-      setVisibilityAlert(true);
       setTextAlert("Enter correct information and fill all fields of form!");
       setColorAlert("red");
     }
   }
 
   const closeFunction = function () {
-    if (visibilityOfAlert) {
-      setVisibilityAlert(false);
-      setDisabledButoon("");
-    }
+    setDisabledButoon("");
+    setTextAlert("");
   };
 
   return (
@@ -78,12 +72,7 @@ export default function Home() {
         <link rel="icon" href="/images/titleImage.jpg" />
       </Head>
       <div className={styles.container}>
-        <Alert
-          visibility={visibilityOfAlert}
-          text={textOfAlert}
-          color={colorOfAlert}
-          close={closeFunction}
-        />
+        <Alert text={textOfAlert} color={colorOfAlert} close={closeFunction} />
         <h1>Form for sending messages</h1>
         <section className={styles["form-container"]}>
           <div className={styles["form-mail"]}>

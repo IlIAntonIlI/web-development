@@ -1,12 +1,12 @@
 import stylesAlert from "./alert.module.scss";
 import Head from "next/head";
 
-export default function Alert({ visibility, text, color, close }) {
+export default function Alert({ text, color, close }) {
   const nameOfClass = "alert-container";
   return (
     <div
       className={
-        visibility
+        text
           ? stylesAlert[nameOfClass] +
             " " +
             stylesAlert[color + "-bg"] +
