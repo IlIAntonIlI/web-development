@@ -49,6 +49,7 @@ export default function Home() {
           setColorAlert(data.meta.data.color);
         })
         .catch((e) => {
+          setVisibility(false);
           setTextAlert("Error while sending");
           setColorAlert("red");
         });
