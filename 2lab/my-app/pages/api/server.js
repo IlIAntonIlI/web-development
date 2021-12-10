@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     (req.headers[header] || "").split(",")?.pop()?.trim() ||
     req.socket.remoteAddress;
   try {
-    await rateLimit(3, clientIP);
+    await rateLimit(2, clientIP);
   } catch (error) {
     return res.status(429).json({
       id: new Date() + " rate limit" + req.headers[header],
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
           messuage:
             "Too many requests!\n Curently: " +
             JSON.stringify(error) +
-            " | Maximum: 3 per minute",
+            " | Maximum: 2 per minute",
           color: "red",
         },
       },
