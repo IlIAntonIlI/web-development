@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     (req.headers[header] || "").split(",")?.pop()?.trim() ||
     req.socket.remoteAddress;
   try {
-    await rateLimit(2, clientIP);
+    await rateLimit(1, clientIP);
   } catch (error) {
     return res.status(429).json({
       id: new Date() + " rate limit" + req.headers[header],
