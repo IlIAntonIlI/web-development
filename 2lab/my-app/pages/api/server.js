@@ -33,7 +33,7 @@ export default async function handler(req, res) {
           messuage:
             "Too many requests!\n Curently: " +
             JSON.stringify(error) +
-            " | Maximum: 2 per minute",
+            " | Maximum: 1 per minute",
           color: "red",
         },
       },
