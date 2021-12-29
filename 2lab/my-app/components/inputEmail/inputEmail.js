@@ -3,7 +3,6 @@ import styles from "./inputEmail.module.scss";
 
 export default function InputEmail({ id, disabled, labelText }) {
   const [errorEmail, setErrorEmail] = useState("");
-  // const [inputEmailBorderColor, setInputEmailBorderColor] = useState("");
   function checkValidation(event) {
     const email = event.target.value;
 
@@ -30,7 +29,7 @@ export default function InputEmail({ id, disabled, labelText }) {
         {labelText}
         <br />
         <input
-          className={errorEmail !== "" ? styles["red-border"] : ""}
+          className={errorEmail && styles["red-border"]}
           type="email"
           id={id}
           maxLength="40"

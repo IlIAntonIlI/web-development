@@ -1,5 +1,4 @@
 import sanitizeHtml from "sanitize-html";
-
 import { validateEmail } from "../index";
 const nodemailer = require("nodemailer");
 const rateLimit = require("lambda-rate-limiter")({
@@ -7,12 +6,21 @@ const rateLimit = require("lambda-rate-limiter")({
 }).check;
 
 const header = "x-forwarded-for";
-export default async function handler(req, res) {
+const transporter = nodemailer.createTransport({
+  host: process.env.HOST,
+  port: process.env.PORT,
+  auth: {
+    user: process.env.USERNAME,
+    pass: process.env.MAIL_PASSWORD,
+  },
+});
+
+export default function handler(req, res) {
   const clientIP =
     (req.headers[header] || "").split(",")?.pop()?.trim() ||
     req.socket.remoteAddress;
   try {
-    await rateLimit(1, clientIP);
+    rateLimit(1, clientIP);
   } catch (error) {
     return res.status(429).json({
       id: new Date() + " rate limit" + req.headers[header],
@@ -22,7 +30,7 @@ export default async function handler(req, res) {
       status: "429",
       code: error.code,
       title: "Rate limit exceeded",
-      detail: "The user made the request more than three times a minute",
+      detail: "The user made the request more than one time a minute",
       source: {
         pointer: error.pointer,
         parametr: error.parametr,
@@ -39,14 +47,6 @@ export default async function handler(req, res) {
       },
     });
   }
-  const transporter = nodemailer.createTransport({
-    host: process.env.HOST,
-    port: process.env.PORT,
-    auth: {
-      user: process.env.USERNAME,
-      pass: process.env.MAIL_PASSWORD,
-    },
-  });
 
   if (!validateEmail(req.body.where.trim())) {
     return res.status(400).json({
@@ -74,7 +74,7 @@ export default async function handler(req, res) {
   };
 
   try {
-    let info = await transporter.sendMail(bodyToSend);
+    let info = transporter.sendMail(bodyToSend);
   } catch (error) {
     return res.status(500).json({
       id:
