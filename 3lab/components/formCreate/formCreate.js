@@ -28,15 +28,8 @@ export default function Form({ visibility, closeFunction }) {
       .then((resp) => {
         return resp.json();
       })
-      .then((data, error) => {
-        if (error) {
-          setTextAlert("Error while submiting");
-          setColorAlert("red");
-          setVisibilityOfSpiner(false);
-          return;
-        }
-        if (data?.meta?.data?.created) {
-          //sanitizing values...
+      .then((data) => {
+        if (data?.created) {
           async function fetchGraphQL(operationsDoc, operationName, variables) {
             const result = await fetch(process.env.DATABASE_LINK, {
               method: "POST",
@@ -67,30 +60,14 @@ export default function Form({ visibility, closeFunction }) {
           function executeMyMutation() {
             return fetchGraphQL(operationsDoc, "MyMutation", {});
           }
-
-          let color = data.meta.data.color;
-          async function startExecuteMyMutation() {
-            try {
-              await executeMyMutation();
-            } catch {
-              setTextAlert("Error while sending request!");
-              setColorAlert("red");
-              setVisibilityOfSpiner(false);
-              return;
-            }
-            setTextAlert("Succesfuly created");
-            setColorAlert(color);
-            setVisibilityOfSpiner(false);
-          }
-          startExecuteMyMutation();
-          return;
+          executeMyMutation();
         }
-        setTextAlert(data.meta.data.messuage);
-        setColorAlert(data.meta.data.color);
+        setTextAlert(data.messuage);
+        setColorAlert(data.color);
         setVisibilityOfSpiner(false);
       })
       .catch((e) => {
-        setTextAlert("Error while creating post");
+        setTextAlert("Something went wrong :(\nTry again later.");
         setColorAlert("red");
         setVisibilityOfSpiner(false);
       });

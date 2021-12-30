@@ -49,7 +49,7 @@
   align-items: center;
   color: var(--color-purple-grey);
   display: flex;
-  font-size: calc(0.5 * var(--font-size-narrow-phone) + 0.4 * var(--font-size-standart));
+  font-size: calc(0.4 * var(--font-size-narrow-phone) + 0.4 * var(--font-size-standart));
   justify-content: flex-end;
   width: 40%;
 
@@ -61,7 +61,7 @@
     width: 50%;
 
     i {
-      font-size: calc(1.5 * var(--font-size-narrow-phone));
+      font-size: calc(1.2 * var(--font-size-narrow-phone));
       margin-right: 2%;
     }
 

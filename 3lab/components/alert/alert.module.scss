@@ -4,11 +4,11 @@
   font-size: 2em;
   min-height: 20vh;
   position: fixed;
-  right: 30%;
-  top: -5%;
-  transition: 0.5s ease;
+  right: 20%;
+  top: -15%;
+  transition: 0.3s ease;
   visibility: hidden;
-  width: 40%;
+  width: 60%;
   z-index: 10;
 }
 
@@ -16,15 +16,10 @@
   align-items: flex-start;
   display: flex;
   font-size: 20px;
-
   justify-content: flex-end;
   padding-right: 5px;
   padding-top: 5px;
   width: 10%;
-
-  @media (max-width: 350px), (max-height: 350px) {
-    font-size: 30%;
-  }
 
   &:hover {
     cursor: pointer;
