@@ -46,7 +46,7 @@ export default function Post({ route }) {
       setTextAlert("Error while fetching data");
       setColorAlert("red");
     }
-    if (posts.length == 0) {
+    if (posts.length === 0) {
       setPosts(data.posts);
     }
   }
@@ -65,7 +65,7 @@ export default function Post({ route }) {
       </Head>
       <Header />
 
-      {posts.length == 0 ? (
+      {posts.length === 0 ? (
         <>
           <main className={styles["post-content"]}></main>
           <Loader />
