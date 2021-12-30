@@ -53,7 +53,7 @@ export default function handler(req, res) {
       } else {
         var resultError = error;
       }
-      return res.status(resultError.status || 400).json({
+      return res.status(resultError?.status || 400).json({
         messuage: resultError?.messuage || "Connecting to mailer failed",
         ok: false,
       });
