@@ -45,8 +45,8 @@ export default function Home() {
         })
         .then((data) => {
           setVisibility(false);
-          setTextAlert(data.meta.data.messuage);
-          setColorAlert(data.meta.data.color);
+          setTextAlert(data.messuage);
+          setColorAlert(data.ok ? "green" : "red");
         })
         .catch((e) => {
           setVisibility(false);

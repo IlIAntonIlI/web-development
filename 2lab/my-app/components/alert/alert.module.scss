@@ -7,6 +7,7 @@
   right: 30%;
   top: -5%;
   transition: 0.5s ease;
+  visibility: hidden;
   width: 40%;
   z-index: 10;
 }
@@ -79,17 +80,14 @@
 
 .green-bg {
   background-color: var(--background-color-light-green);
+  visibility: visible;
+  top: 5%;
+  transition: 0.5s ease;
 }
 
 .red-bg {
   background-color: var(--background-color-light-red);
-}
-
-.hidden {
-  visibility: hidden;
-}
-
-.move {
+  visibility: visible;
   top: 5%;
-  transition: 0.5s ease;
+  transition: ease;
 }
