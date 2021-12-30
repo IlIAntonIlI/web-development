@@ -2,8 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import Spiner from "../components/spiner/spiner";
 import Alert from "../components/alert/alert";
-import InputEmail from "../components/inputEmail/inputEmail";
-import InputText from "../components/inputText/inputText";
+import FormInput from "../components/input/input";
 import { useState } from "react";
 
 export function validateEmail(email) {
@@ -78,12 +77,13 @@ export default function Home() {
         <section className={styles["form-container"]}>
           <div className={styles["form-mail"]}>
             <form id="emailForm" onSubmit={prevent}>
-              <InputEmail
+              <FormInput
+                type="email"
                 id="sendFor"
                 labelText="Enter your e-mail:"
                 disabled=""
               />
-              <InputText formId="emailForm" />
+              <FormInput type="text" formId="emailForm" />
               <div className={styles["button-container"]}>
                 <div className={styles["button-wrap"]}>
                   <button
