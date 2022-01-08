@@ -21,13 +21,13 @@ export default function handler(req, res) {
     req.socket.remoteAddress;
   rateLimit(1, clientIP)
     .then(() => {
-      if (!validateEmail(req.body.where.trim())) {
+      if (!validateEmail(req.body?.where.trim())) {
         throw newError("Uncorrect email", 400);
       }
     })
     .then(() => {
       let text =
-        "Email: " + req.body?.where + "<br/>" + "Message:" + req.body.letter;
+        "Email: " + req.body.where + "<br/>" + "Message:" + req.body.letter;
       const clearHtml = sanitizeHtml(text);
 
       const bodyToSend = {
