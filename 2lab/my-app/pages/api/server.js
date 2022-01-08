@@ -27,7 +27,7 @@ export default function handler(req, res) {
     })
     .then(() => {
       let text =
-        "Email: " + req.body.where + "<br/>" + "Message:" + req.body.letter;
+        "Email: " + req.body?.where + "<br/>" + "Message:" + req.body.letter;
       const clearHtml = sanitizeHtml(text);
 
       const bodyToSend = {

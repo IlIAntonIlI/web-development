@@ -50,10 +50,9 @@ form {
   }
 
   @media (max-width: 200px), (max-height: 400px) {
-    font-size:
-      calc(
-        var(--font-size-short-phone) * 0.4 + var(--font-size-narrow-phone) * 0.4
-      );
+    font-size: calc(
+      var(--font-size-short-phone) * 0.4 + var(--font-size-narrow-phone) * 0.4
+    );
   }
 
   @media (min-height: 1000px) and (min-width: 800px) {
