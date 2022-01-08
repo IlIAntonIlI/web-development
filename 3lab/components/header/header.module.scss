@@ -10,7 +10,7 @@
 .logotype-container {
   display: flex;
   width: 60%;
-  @media (max-height:150px),(max-width:160px) {
+  @media (max-height: 150px), (max-width: 160px) {
     flex-direction: column;
     justify-content: center;
 
@@ -26,10 +26,11 @@
 
     figcaption {
       color: var(--color-purple-grey);
-      font-size: calc(0.65 * var(--font-size-narrow-phone) + 0.5 * var(--font-size-standart));
+      font-size: calc(
+        0.65 * var(--font-size-narrow-phone) + 0.5 * var(--font-size-standart)
+      );
       letter-spacing: 4px;
       word-wrap: break-word;
-     
     }
 
     &:nth-child(1) {
@@ -49,7 +50,9 @@
   align-items: center;
   color: var(--color-purple-grey);
   display: flex;
-  font-size: calc(0.4 * var(--font-size-narrow-phone) + 0.4 * var(--font-size-standart));
+  font-size: calc(
+    0.4 * var(--font-size-narrow-phone) + 0.4 * var(--font-size-standart)
+  );
   justify-content: flex-end;
   width: 40%;
 
