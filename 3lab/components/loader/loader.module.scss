@@ -1,9 +1,9 @@
 .loader-container {
-  height: 45vh;
   left: calc((100% - 35vw) / 2);
+  min-height: 45vh;
+  min-width: 35vw;
   position: absolute;
   top: 250px;
-  width: 35vw;
   z-index: 2;
 
   div {
@@ -12,7 +12,7 @@
     font-size: 3vw;
     justify-content: center;
     letter-spacing: 1px;
+    min-width: 35vw;
     position: absolute;
-    width: 35vw;
   }
 }

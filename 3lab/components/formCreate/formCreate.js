@@ -64,11 +64,12 @@ export default function Form({ visibility, closeFunction }) {
         }
         setTextAlert(data.messuage);
         setColorAlert(data.color);
-        setVisibilityOfSpiner(false);
       })
       .catch((e) => {
         setTextAlert("Something went wrong :(\nTry again later.");
         setColorAlert("red");
+      })
+      .finally(() => {
         setVisibilityOfSpiner(false);
       });
   }
