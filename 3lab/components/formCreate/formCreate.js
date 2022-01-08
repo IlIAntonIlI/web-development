@@ -45,20 +45,20 @@ export default function Form({ visibility, closeFunction }) {
             return await result.json();
           }
 
-          const operationsDoc = `
-                    query MyQuery {
-                    __typename
-                    }
-                    
-                    mutation MyMutation {
-                    insert_posts_one(object: {Theme: "${e.target.elements.theme.value}", author: "${e.target.elements.author.value}", postText: "${e.target.elements.text.value}"}) {
+          const operationsDoc = `                   
+                    mutation MyMutation($theme: String!, $author: String!, $post: String!) {
+                    insert_posts_one(object: {Theme: $theme, author: $author, postText: $post}) {
                         id
                     }
                     }
                 `;
 
           function executeMyMutation() {
-            return fetchGraphQL(operationsDoc, "MyMutation", {});
+            return fetchGraphQL(operationsDoc, "MyMutation", {
+              theme: e.target.elements.theme.value,
+              author: e.target.elements.author.value,
+              post: e.target.elements.text.value,
+            });
           }
           executeMyMutation();
         }
