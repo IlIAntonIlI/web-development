@@ -23,8 +23,8 @@ export default function Home() {
   }
 
   function checkInfo(event) {
-    const secondEmail = event.target.elements.sendFor.value;
-    const message = event.target.elements.message.value;
+    const secondEmail = event.target.elements.sendFor?.value;
+    const message = event.target.elements.message?.value;
     setDisabledButoon(true);
     if (validateEmail(secondEmail) && message !== "") {
       setVisibility(true);
