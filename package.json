@@ -1,5 +1,5 @@
 {
-  "workspaces": ["2lab/my-app","3lab"],
+  "workspaces": ["1lab","2lab/my-app","3lab","4lab"],
   "name": "web-development",
   "version": "1.0.0",
   "main": "index.js",

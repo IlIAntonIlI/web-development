@@ -1,0 +1,133 @@
+.burger-menu-container {
+  display: flex;
+  justify-content: flex-end;
+  max-height: 100vh;
+  padding: 5px;
+  padding-right: 1.5%;
+  width: 40%;
+
+  section {
+    background: var(--background-color-burger-menu);
+    height: calc(100% - 50px);
+    padding: 50px 10px 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: 0.5s ease-in;
+    visibility: hidden;
+    width: 0;
+    z-index: 3;
+    @media (max-height:300px),(max-width:300px) {
+      height: calc(100% - 30px);
+      padding: 30px 10px 0;
+    }
+
+    div {
+      align-items: center;
+      background: var(--color-section-burger-menu);
+      color: var(--color-close-open-burger-menu-button);
+      display: flex;
+      font-size: 0;
+      height: 20%;
+      justify-content: center;
+      transition: 0.5s ease-in;
+      width: 100%;
+    }
+  }
+}
+
+#menu {
+  display: none;
+}
+
+.menu-button {
+  background: transparent;
+  display: block;
+  height: 40px;
+  position: relative;
+  width: 40px;
+  
+  z-index: 4;
+  @media (max-height:300px),(max-width:300px) {
+    height: 20px;
+    width: 20px;
+  }
+
+  &::after {
+    background: var(--color-close-open-burger-menu-button);
+    bottom: 30%;
+    content: '';
+    display: block;
+    height: 3px;
+    left: 0;
+    position: absolute;
+    transition: 0.5s linear;
+    width: 100%;
+  }
+
+  &::before {
+    background: var(--color-close-open-burger-menu-button);
+    content: '';
+    display: block;
+    height: 3px;
+    left: 0;
+    position: absolute;
+    top: 30%;
+    transition: 0.5s linear;
+    width: 100%;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.close-area {
+  height: 0;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 0;
+}
+
+#menu:checked {
+  ~ .menu-button {
+    &::after {
+      bottom: 47.5%;
+      transform: rotate(45deg);
+      transition: 0.5s linear;
+      @media (max-height:300px),(max-width:300px) {
+        bottom: 42.5%;
+      }
+    }
+
+    &::before {
+      top: 47.5%;
+      transform: rotate(-45deg);
+      transition: 0.5s linear;
+      @media (max-height:300px),(max-width:300px) {
+        top: 46%;
+      }
+    }
+  }
+
+  ~ section {
+    transition: 0.5s ease-in;
+    visibility: visible;
+    width: 40%;
+
+    div {
+      cursor: pointer;
+      font-size: 1.2vw;
+      height: 20%;
+      transition: 0.5s linear;
+    }
+  }
+
+  ~ .close-area {
+    background: transparent;
+    height: 100%;
+    width: calc(60% - 20px);
+    z-index: 6;
+  }
+}
