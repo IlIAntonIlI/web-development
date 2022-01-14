@@ -1,23 +1,22 @@
 {
+  "workspaces": ["1lab","2lab/my-app","3lab","4lab"],
   "name": "web-development",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "workspaces":["4lab"],
+  "devDependencies": {
+    "husky": "^7.0.4"
+  },
   "scripts": {
     "prepare": "husky install"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/IlIAntonIlI/web-development.git"
+    "url": "git+https://github.com/IlIAntonIlI/web-development.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/IlIAntonIlI/web-development/issues"
   },
-  "homepage": "https://github.com/IlIAntonIlI/web-development#readme",
-  "devDependencies": {
-    "husky": "^7.0.2"
-  }
+  "homepage": "https://github.com/IlIAntonIlI/web-development#readme"
 }

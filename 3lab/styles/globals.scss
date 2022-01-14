@@ -1,0 +1,39 @@
+* {
+  --color-white: rgb(250, 248, 248);
+  --color-green: rgb(0, 122, 0);
+  --color-button-input-light-green: #6ab04c;
+  --color-text-form-orange: #f0932b;
+  --color-close-button-orange: #fa6900;
+  --color-text-form-light-orange: #e4ab6b;
+  --color-background-color-form: #fceda5;
+  --color-medium-transparent-grey: rgba(128, 128, 128, 0.377);
+  --color-light-blue: #c7ecee;
+  --color-purple-grey: #2f315f;
+  --border-post-blocks-light-green-color: #55efc4;
+  --border-post-semi-blue-color: #22a6b3;
+  --font-color-post-button: #718093;
+  --font-color-post-button-hover: #1b1464;
+  --background-color-footer: #dfe4ea;
+  --background-color-light-green: #7bed9f;
+  --background-color-light-red: #fd7272;
+  --font-size-standart: 18px;
+  --font-size-narrow-phone: 3vw;
+  --font-size-short-phone: 1vh;
+
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+}

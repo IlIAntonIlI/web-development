@@ -1,0 +1,8 @@
+{
+  "extends": ["stylelint-prettier/recommended"],
+  "plugins": ["stylelint-prettier"],
+  "rules": {
+    "max-nesting-depth": [3],
+    "prettier/prettier": true
+  }
+}
