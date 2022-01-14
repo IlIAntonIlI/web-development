@@ -1,0 +1,11 @@
+.post-content {
+  height: auto;
+  min-height: calc(100vh - 350px);
+  padding: 3vh 20vw;
+  width: calc(100% - 40vw);
+  word-wrap: break-word;
+
+  h1 {
+    text-align: center;
+  }
+}

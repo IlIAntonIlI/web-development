@@ -1,0 +1,18 @@
+.loader-container {
+  left: calc((100% - 35vw) / 2);
+  min-height: 45vh;
+  min-width: 35vw;
+  position: absolute;
+  top: 250px;
+  z-index: 2;
+
+  div {
+    bottom: 2px;
+    display: flex;
+    font-size: 3vw;
+    justify-content: center;
+    letter-spacing: 1px;
+    min-width: 35vw;
+    position: absolute;
+  }
+}

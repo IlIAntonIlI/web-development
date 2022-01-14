@@ -1,7 +1,7 @@
 name: Format check
 on: [pull_request]
 jobs:
-  build_and_preview:
+  build_and_preview_lab2:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -10,3 +10,12 @@ jobs:
       - name: "Checking 2lab project" 
         working-directory: 2lab/my-app
         run: npm ci && npm run format && npm run lint && npm run lint:style
+  build_and_preview_lab3:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+          with:
+            cache: "npm"
+        - name: "Checking 3lab project" 
+          working-directory: 3lab
+          run: npm ci && npm run format && npm run lint && npm run lint:style
