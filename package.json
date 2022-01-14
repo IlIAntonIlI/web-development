@@ -1,11 +1,7 @@
 {
+  "workspaces": ["2lab/my-app","3lab"],
   "name": "web-development",
-
-  "workspaces": [
-    "3lab"
-  ],
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "devDependencies": {
     "husky": "^7.0.4"
@@ -15,7 +11,6 @@
   },
   "repository": {
     "type": "git",
-
     "url": "git+https://github.com/IlIAntonIlI/web-development.git"
   },
   "author": "",
